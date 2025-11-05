@@ -638,3 +638,76 @@ window.initCustomAnimations = function() {
   // Any other custom animation initializations can be added here
   console.log('Custom animations reinitialized');
 };
+
+// TrendKor Color Overlay Scroll Animations
+function initTrendKorOverlayAnimations() {
+  // Wait for DOM to be ready and GSAP to be available
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    console.warn('GSAP or ScrollTrigger not available for TrendKor overlay animations');
+    return;
+  }
+
+  const topOverlay = document.querySelector('.trendkor-overlay-top');
+  const bottomOverlay = document.querySelector('.trendkor-overlay-bottom');
+  const heroWrapper = document.querySelector('.sliding-hero-video_wrapper');
+
+  if (!topOverlay || !bottomOverlay || !heroWrapper) {
+    console.warn('TrendKor overlay elements not found');
+    return;
+  }
+
+  // Animation for top overlay - slides up and out
+  gsap.to(topOverlay, {
+    y: "-100%",
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: heroWrapper,
+      start: "top top",
+      end: "bottom center",
+      scrub: 1,
+      onUpdate: (self) => {
+        // Optional: Add some rotation or scale effect
+        gsap.set(topOverlay, {
+          scaleY: 1 - (self.progress * 0.1) // Slight scale effect
+        });
+      }
+    }
+  });
+
+  // Animation for bottom overlay - slides down and out
+  gsap.to(bottomOverlay, {
+    y: "100%",
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: heroWrapper,
+      start: "top top",
+      end: "bottom center",
+      scrub: 1,
+      onUpdate: (self) => {
+        // Optional: Add some rotation or scale effect
+        gsap.set(bottomOverlay, {
+          scaleY: 1 - (self.progress * 0.1) // Slight scale effect
+        });
+      }
+    }
+  });
+
+  console.log('TrendKor overlay scroll animations initialized');
+}
+
+// Initialize TrendKor animations when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  // Wait a bit for all components to load
+  setTimeout(initTrendKorOverlayAnimations, 500);
+});
+
+// Also initialize when custom animations are reinitialized
+const originalInitCustomAnimations = window.initCustomAnimations;
+window.initCustomAnimations = function() {
+  if (originalInitCustomAnimations) {
+    originalInitCustomAnimations();
+  }
+  
+  // Initialize TrendKor overlay animations
+  setTimeout(initTrendKorOverlayAnimations, 100);
+};
