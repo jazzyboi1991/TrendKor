@@ -148,6 +148,31 @@ html, body {
     transform: translateY(-200px);
 }
 
+/* 타이틀 그래픽 그룹: absolute, top은 JS에서만 제어, 반응형 유지 */
+.title-graphic-group, .subtitle-graphic-group {
+    position: absolute;
+    left: 102px;
+    right: 102px;
+    margin: 0 auto;
+    transition: top 0.8s cubic-bezier(0.4,0,0.2,1), opacity 0.8s cubic-bezier(0.4,0,0.2,1);
+    z-index: 20;
+}
+
+.title-graphic-group.hide,
+.subtitle-graphic-group.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.title-graphic-group {
+    top: 100px;
+    height: 616px;
+}
+.subtitle-graphic-group {
+    top: 428px;
+    height: 629px;
+}
+
 /* 로고 */
 .logo {
     width: 103.57px;
@@ -202,22 +227,14 @@ html, body {
 
 /* 타이틀 + 그래픽 그룹 (빨간색) */
 .title-graphic-group {
-    position: absolute;
-    left: 102px;
-    right: 102px;
     top: 100px;
     height: 616px;
-    margin: 0 auto;
 }
 
 /* 서브타이틀 + 그래픽 그룹 (파란색) */
 .subtitle-graphic-group {
-    position: absolute;
-    left: 102px;
-    right: 102px;
     top: 428px;
     height: 629px;
-    margin: 0 auto;
 }
 
 /* 벡터 그래픽들 */
@@ -546,3 +563,4 @@ html, body {
 /* 스무스 스크롤링 */
 html {
     scroll-behavior: smooth;
+}

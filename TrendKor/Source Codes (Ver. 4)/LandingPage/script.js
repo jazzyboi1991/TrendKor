@@ -73,6 +73,81 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // 빨간색/파란색 타이틀 그룹 스크롤 애니메이션
+    const redGroup = document.querySelector('.title-graphic-group');
+    const blueGroup = document.querySelector('.subtitle-graphic-group');
+
+    function getScale() {
+        // CSS 변수에서 스케일 값 가져오기
+        const scale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--final-scale'));
+        return isNaN(scale) ? 1 : scale;
+    }
+
+    function updateTitleGroupScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const hideThreshold = 400;
+        const scale = getScale();
+        if (redGroup) {
+            if (scrollY > hideThreshold) {
+                redGroup.classList.add('hide');
+            } else {
+                redGroup.classList.remove('hide');
+                // 부모가 scale을 갖고 있으므로 이동량에 scale을 곱해서 보정
+                const moveY = Math.min(scrollY / hideThreshold * 300, 300) * scale;
+                redGroup.style.top = `${100 - moveY}px`;
+                redGroup.style.opacity = `${1 - scrollY / hideThreshold}`;
+            }
+        }
+        if (blueGroup) {
+            if (scrollY > hideThreshold) {
+                blueGroup.classList.add('hide');
+            } else {
+                blueGroup.classList.remove('hide');
+                const moveY = Math.min(scrollY / hideThreshold * 300, 300) * scale;
+                blueGroup.style.top = `${428 + moveY}px`;
+                blueGroup.style.opacity = `${1 - scrollY / hideThreshold}`;
+            }
+        }
+    }
+
+    window.addEventListener('scroll', updateTitleGroupScroll);
+    updateTitleGroupScroll();
+
+    // 테스트용 빨간색 직사각형 완전 제거
+    let testRect = document.querySelector('.test-rect');
+    if (testRect) {
+        testRect.remove();
+    }
+
+    // .test-rect DOM에서 완전 제거 (혹시 남아있을 경우)
+    document.querySelectorAll('.test-rect').forEach(el => el.remove());
+
+    // 테스트용 직사각형 생성 및 스크롤 애니메이션
+    testRect = document.querySelector('.test-rect');
+    if (!testRect) {
+        testRect = document.createElement('div');
+        testRect.className = 'test-rect';
+        document.body.appendChild(testRect);
+    }
+
+    function updateTestRectScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const hideThreshold = 400;
+        if (testRect) {
+            if (scrollY > hideThreshold) {
+                testRect.classList.add('hide');
+            } else {
+                testRect.classList.remove('hide');
+                const moveY = Math.min(scrollY / hideThreshold * 300, 300);
+                testRect.style.transform = `translateX(-50%) translateY(-${moveY}px)`;
+                testRect.style.opacity = `${1 - scrollY / hideThreshold}`;
+            }
+        }
+    }
+
+    window.addEventListener('scroll', updateTestRectScroll);
+    updateTestRectScroll();
+
     // 키보드 네비게이션 지원
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Tab') {
