@@ -77,6 +77,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const redGroup = document.querySelector('.title-graphic-group');
     const blueGroup = document.querySelector('.subtitle-graphic-group');
 
+    // 빨간색 제목 레이어(타이틀 그룹) 항상 보이게 강제
+    if (redGroup) {
+        redGroup.style.display = 'block';
+        redGroup.classList.remove('hide');
+        redGroup.style.opacity = '1';
+    }
+
     function getScale() {
         // CSS 변수에서 스케일 값 가져오기
         const scale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--final-scale'));
@@ -156,6 +163,30 @@ document.addEventListener('DOMContentLoaded', function() {
             // 포커스 관리 로직 추가 가능
         }
     });
+
+    function updateVideoClipToSubtitleBottom() {
+        const video = document.querySelector('.video');
+        const subtitleGroup = document.querySelector('.subtitle-graphic-group');
+        if (!video || !subtitleGroup) return;
+
+        // 파란색 그룹의 하단 위치 계산 (부모 기준)
+        const mainPage = document.querySelector('.main-page');
+        const subtitleRect = subtitleGroup.getBoundingClientRect();
+        const mainRect = mainPage.getBoundingClientRect();
+        // 파란색 그룹의 하단이 mainPage 내부에서 몇 px인지 계산
+        const subtitleBottom = subtitleRect.bottom - mainRect.top;
+        // 영상의 top 기준에서 하단까지의 clip-path inset 계산
+        // 영상의 top은 100px, 영상의 전체 height는 1245px
+        // clip-path: inset(0px 0px (1245px - subtitleBottom) 0px)
+        let clipBottom = Math.max(0, 1245 - subtitleBottom);
+        video.style.clipPath = `inset(0px 0px ${clipBottom}px 0px)`;
+    }
+    window.addEventListener('resize', updateVideoClipToSubtitleBottom);
+    window.addEventListener('scroll', updateVideoClipToSubtitleBottom);
+    document.addEventListener('DOMContentLoaded', updateVideoClipToSubtitleBottom);
+    // DOMContentLoaded에서 바로 updateVideoClipToSubtitleBottom()을 호출하면, subtitle-graphic-group의 위치가 아직 제대로 잡히지 않아 잘못된 clip-path가 적용될 수 있음.
+    // window.onload에서 한 번 더 호출하여 모든 이미지, SVG, 폰트 등이 로드된 후 정확한 위치로 clip-path를 재적용
+    window.addEventListener('load', updateVideoClipToSubtitleBottom);
 
     console.log('TrendKor Landing Page loaded successfully!');
 });
