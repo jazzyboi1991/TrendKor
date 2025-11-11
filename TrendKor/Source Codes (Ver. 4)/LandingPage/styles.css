@@ -118,7 +118,9 @@ html, body {
 }
 
 /* 타이틀 그래픽 그룹: absolute, top은 JS에서만 제어, 반응형 유지 */
-.title-graphic-group, .subtitle-graphic-group {
+.title-graphic-group,
+.subtitle-graphic-group {
+    display: none;
     position: absolute;
     left: 102px;
     right: 102px;
@@ -141,14 +143,10 @@ html, body {
     width: 1717px;
     height: 616px;
     z-index: 20;
-    /* flex 중앙 정렬 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-/* 그룹의 x축 기준점을 가운데로 설정하고, svg와 텍스트의 상대적 위치는 그대로 유지 */
 .subtitle-graphic-group {
+    display: block;
     position: absolute;
     left: 50%;
     top: 428px;
@@ -218,12 +216,15 @@ html, body {
 
 /* 비디오 배경 */
 .video {
-    width: 1920px;
-    height: 959px;
+    width: 1717px;
+    height: 1245px; /* 기존 전체 영역 유지 */
     position: absolute;
-    left: 0px;
+    left: 50%;
     top: 100px;
+    transform: translateX(-50%);
     object-fit: cover;
+    object-position: center top;
+    clip-path: inset(0px 0px 188px 0px); /* 파란색 그룹 아래로 영상이 표시되지 않도록 하단을 잘라냄 */
 }
 
 /* 타이틀 + 그래픽 그룹 (빨간색) */
