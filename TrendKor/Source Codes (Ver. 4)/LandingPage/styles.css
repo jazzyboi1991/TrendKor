@@ -358,11 +358,12 @@ html, body {
     top: 1823px;
     border-radius: 24px;
     border: 1px solid var(--color-white);
-    box-shadow: 3px 4px 4px 2px rgba(255, 249.51, 172.71, 0.30);
+    box-shadow: 3px 4px 4px 2px rgba(255, 249, 173, 0.30);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
+    padding: 32px 32px 32px 32px; /* 상하좌우 여백 통일 */
+    justify-content: flex-start;
 }
 
 /* 카드별 위치 및 색상 */
@@ -398,39 +399,35 @@ html, body {
 
 /* 카드 내부 요소들 */
 .card-title {
-    position: relative;
-    top: 40px;
+    position: static;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     color: var(--color-white);
     font-size: 30px;
     font-weight: 700;
     line-height: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    margin-top: 0;
 }
 
 .card-line {
-    width: 480px;
+    width: 80%;
     height: 3px;
     background: var(--color-white);
     outline: 3px solid var(--color-white);
-    margin: 20px 0;
+    margin: 0 auto 20px auto;
 }
 
 .card-text {
-    width: 394px;
-    height: 440px;
+    width: 100%;
+    min-height: 320px;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     color: var(--color-white);
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 400;
-    line-height: 1.4;
-    flex: 1;
+    line-height: 1.5;
+    margin-top: 0;
 }
 
 /* 밈 섹션 */
@@ -501,7 +498,7 @@ html, body {
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 5px 8px 8px 4px rgba(255, 249.51, 172.71, 0.50);
+    box-shadow: 5px 8px 8px 4px rgba(255, 249, 172, 0.50);
     transition: all 0.3s ease;
 }
 
