@@ -102,6 +102,20 @@ body {
     padding: 0;
 }
 
+/* 타이틀 마스크 컨테이너 */
+.title-mask-container {
+    position: absolute;
+    left: 50%;
+    top: 5.208vw;
+    transform: translateX(-50%);
+    width: 89.427vw;
+    height: 49.844vw;
+    overflow: hidden;
+    clip-path: inset(0); /* 동영상 크기에 맞춘 정확한 클리핑 */
+    -webkit-clip-path: inset(0); /* Safari 지원 */
+    z-index: 20;
+}
+
 /* 타이틀 그래픽 그룹 */
 .title-graphic-group,
 .subtitle-graphic-group {
@@ -110,20 +124,20 @@ body {
     left: 50%;
     transform: translateX(-50%);
     margin: 0 auto;
-    z-index: 20;
+    /* GSAP가 애니메이션 제어 - transition 제거 */
 }
 
 .title-graphic-group {
     width: 89.427vw;
     height: 32.083vw;
-    top: 5.208vw;
+    top: 0;
     z-index: 2;
 }
 
 .subtitle-graphic-group {
     width: 89.375vw;
     height: 32.760vw;
-    top: 22.292vw;
+    top: 17.084vw;
     z-index: 2;
 }
 
