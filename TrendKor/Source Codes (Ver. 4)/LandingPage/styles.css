@@ -72,11 +72,20 @@
     box-sizing: border-box;
 }
 
-html, body {
+html {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-family);
+    background: var(--color-white);
+    margin: 0;
+    padding: 0;
+}
+
+body {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     font-family: var(--font-family);
     background: var(--color-white);
     margin: 0;
@@ -86,13 +95,11 @@ html, body {
 /* 메인 컨테이너 */
 .main-page {
     width: 100vw;
-    min-height: 204.688vw;
+    height: 190.156vw;
     position: relative;
     background: var(--color-white);
-    overflow-x: hidden;
     margin: 0;
     padding: 0;
-    padding-bottom: 14.583vw;
 }
 
 /* 타이틀 그래픽 그룹 */
@@ -135,22 +142,48 @@ html, body {
     z-index: 1;
 }
 
+/* Sticky 네비게이션 바 */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 5.394vw;
+    min-height: 60px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5.156vw;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.104vw 0.521vw rgba(0, 0, 0, 0.1);
+}
+
 /* 로고 */
 .logo {
     width: 5.394vw;
     height: 5.394vw;
-    position: absolute;
-    left: 5.156vw;
-    top: 0;
+    min-width: 50px;
+    min-height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* 메뉴 컨테이너 */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2.604vw;
 }
 
 /* 메뉴 버튼들 */
 .login-button {
-    width: 5.556vw;
-    height: 2.050vw;
-    position: absolute;
-    left: 80.729vw;
-    top: 1.579vw;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -159,14 +192,12 @@ html, body {
     font-size: clamp(16px, 1.667vw, 32px);
     font-weight: 500;
     cursor: pointer;
+    padding: 0.521vw 1.042vw;
+    border-radius: 0.417vw;
+    transition: all 0.3s ease;
 }
 
 .menu-text {
-    width: 5.232vw;
-    height: 2.050vw;
-    position: absolute;
-    left: 89.635vw;
-    top: 1.579vw;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -175,19 +206,21 @@ html, body {
     font-size: clamp(16px, 1.667vw, 32px);
     font-weight: 500;
     cursor: pointer;
+    padding: 0.521vw 1.042vw;
+    border-radius: 0.417vw;
+    transition: all 0.3s ease;
 }
 
 /* 비디오 배경 */
 .video {
     width: 89.427vw;
-    height: 64.844vw;
+    height: 49.844vw;
     position: absolute;
     left: 50%;
     top: 5.208vw;
     transform: translateX(-50%);
     object-fit: cover;
     object-position: center top;
-    clip-path: inset(0 0 9.792vw 0);
 }
 
 /* 벡터 그래픽들 */
@@ -465,7 +498,7 @@ html, body {
 .login-button:hover,
 .menu-text:hover {
     color: var(--color-red);
-    transition: color 0.3s ease;
+    background: rgba(198, 12, 48, 0.1);
 }
 
 .card:hover {
@@ -503,7 +536,7 @@ html {
     margin-right: 2.083vw;
     text-align: right;
     color: white;
-    font-size: clamp(16px, 2.083vw, 40px);
+    font-size: clamp(12px, 1.250vw, 24px);
     font-family: 'Haas Grot Text Trial', 'Neue Haas Grotesk Text', 'Neue Haas Grotesk Display', Arial, sans-serif;
     font-weight: 400;
     word-wrap: break-word;
@@ -512,6 +545,29 @@ html {
 /* 반응형 미디어 쿼리 */
 @media (max-width: 768px) {
     /* 모바일 최적화 */
+    .navbar {
+        height: auto;
+        padding: 1.5vw 4vw;
+        min-height: 70px;
+    }
+
+    .logo {
+        width: 12vw;
+        height: 12vw;
+        min-width: 40px;
+        min-height: 40px;
+    }
+
+    .nav-menu {
+        gap: 4vw;
+    }
+
+    .login-button,
+    .menu-text {
+        font-size: clamp(14px, 3vw, 20px);
+        padding: 1vw 2vw;
+    }
+
     .Footer {
         flex-direction: column;
         gap: 3.125vw;
