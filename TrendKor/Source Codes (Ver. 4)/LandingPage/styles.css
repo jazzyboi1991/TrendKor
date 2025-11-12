@@ -107,12 +107,8 @@ html, body {
     position: relative;
     background: var(--color-white);
     overflow: hidden;
-
-    /* 브라우저 크기에 따라 전체 페이지 스케일링 */
     transform: scale(var(--final-scale));
     transform-origin: top left;
-
-    /* 스케일된 페이지가 화면을 꽉 채우도록 조정 */
     margin: 0;
     padding: 0;
 }
@@ -120,40 +116,25 @@ html, body {
 /* 타이틀 그래픽 그룹: absolute, top은 JS에서만 제어, 반응형 유지 */
 .title-graphic-group,
 .subtitle-graphic-group {
-    display: none;
-    position: absolute;
-    left: 102px;
-    right: 102px;
-    margin: 0 auto;
-    transition: top 0.8s cubic-bezier(0.4,0,0.2,1), opacity 0.8s cubic-bezier(0.4,0,0.2,1);
-    z-index: 20;
-}
-
-.title-graphic-group.hide,
-.subtitle-graphic-group.hide {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.title-graphic-group {
-    position: absolute;
-    left: 50%;
-    top: 100px;
-    transform: translateX(-50%);
-    width: 1717px;
-    height: 616px;
-    z-index: 20;
-}
-
-.subtitle-graphic-group {
     display: block;
     position: absolute;
     left: 50%;
-    top: 428px;
     transform: translateX(-50%);
+    margin: 0 auto;
+    transition: top 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+    z-index: 20;
+}
+
+.title-graphic-group {
+    width: 1717px;
+    height: 616px;
+    z-index: 2;
+}
+
+.subtitle-graphic-group {
     width: 1716px;
     height: 629px;
-    z-index: 20;
+    z-index: 2;
 }
 
 .subtitle-path-text-group {
@@ -229,13 +210,11 @@ html, body {
 
 /* 타이틀 + 그래픽 그룹 (빨간색) */
 .title-graphic-group {
-    top: 100px;
     height: 616px;
 }
 
 /* 서브타이틀 + 그래픽 그룹 (파란색) */
 .subtitle-graphic-group {
-    top: 428px;
     height: 629px;
 }
 
