@@ -31,6 +31,14 @@
     height: clamp(1.2rem, 4vw, 1.8rem);
     cursor: pointer;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: none;
+}
+
+.Vector:hover {
+    animation: spinRotate 0.6s ease-in-out;
 }
 
 .Vector svg {
@@ -295,5 +303,15 @@
     .Year2023,
     .Year2022 {
         margin-bottom: 1rem;
+    }
+}
+
+/* ===== Animations ===== */
+@keyframes spinRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
