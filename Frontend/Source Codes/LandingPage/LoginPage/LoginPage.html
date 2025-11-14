@@ -4,40 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>로그인</title>
     <link rel="stylesheet" href="LoginPage.css">
 </head>
 
 <body>
-    <div data-layer="Login Menu" class="LoginMenu">
-        <div data-svg-wrapper data-layer="Vector" class="Vector">
-            <svg width="20" height="20" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="login-container">
+        <!-- Close Button -->
+        <button class="close-btn" aria-label="닫기">
+            <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M32 3.22622L28.7771 0L16 12.7905L3.22286 0L0 3.22622L12.7771 16.0167L0 28.8071L3.22286 32.0334L16 19.2429L28.7771 32.0334L32 28.8071L19.2229 16.0167L32 3.22622Z"
                     fill="white" />
             </svg>
-        </div>
-        <div data-layer="LOGIN" class="Login">
-            LOGIN</div>
-        <div data-layer="ID" class="Id">
-            ID</div>
-        <div data-layer="PW" class="Pw">
-            PW</div>
-        <div data-layer="Rectangle 1" class="Rectangle1"></div>
-        <div data-layer="Rectangle 2" class="Rectangle2"></div>
-        <div data-layer="Button Group" class="ButtonGroup">
-            <div style="position: relative; width: clamp(5rem, 40%, 7.5rem); height: clamp(2rem, 8vh, 3rem); max-width: 130px;">
-                <div data-layer="Rectangle 3" class="Rectangle3"></div>
-                <div data-layer="SIGN IN" class="SignIn">
-                    SIGN IN</div>
+        </button>
+
+        <!-- Title -->
+        <h1 class="login-title">LOGIN</h1>
+
+        <!-- Login Form -->
+        <form class="login-form">
+            <!-- ID Input -->
+            <div class="form-group">
+                <label for="user-id" class="form-label">ID</label>
+                <input
+                    type="text"
+                    id="user-id"
+                    class="form-input"
+                    placeholder="아이디를 입력하세요"
+                    required
+                >
             </div>
-            <div style="position: relative; width: clamp(5rem, 40%, 7.5rem); height: clamp(2rem, 8vh, 3rem); max-width: 130px;">
-                <div data-layer="Rectangle 4" class="Rectangle4"></div>
-                <div data-layer="SIGN UP" class="SignUp">
-                    SIGN UP</div>
+
+            <!-- Password Input -->
+            <div class="form-group">
+                <label for="user-password" class="form-label">PW</label>
+                <input
+                    type="password"
+                    id="user-password"
+                    class="form-input"
+                    placeholder="비밀번호를 입력하세요"
+                    required
+                >
             </div>
-        </div>
+
+            <!-- Button Group -->
+            <div class="button-group">
+                <button type="submit" class="btn btn-signin">SIGN IN</button>
+                <button type="button" class="btn btn-signup">SIGN UP</button>
+            </div>
+        </form>
     </div>
+
     <script src="LoginPage.js"></script>
 </body>
 
