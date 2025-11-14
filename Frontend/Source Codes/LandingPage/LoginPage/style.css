@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.LoginMenu {
+    width: 600px;
+    height: 960px;
+    position: relative;
+    background: black;
+    overflow: hidden;
+}
+.Vector {
+    left: 520px;
+    top: 48.05px;
+    position: absolute;
+}
+.Login {
+    width: 102px;
+    height: 23.02px;
+    left: 249px;
+    top: 52.05px;
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 32px;
+    font-family: 'Haas Grot Text Trial', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+.Id {
+    left: 60px;
+    top: 200px;
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 60px;
+    font-family: 'Haas Grot Text Trial', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+.Pw {
+    left: 60px;
+    top: 472px;
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 60px;
+    font-family: 'Haas Grot Text Trial', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+.Frame1 {
+    width: 480px;
+    height: 80px;
+    left: 60px;
+    top: 292px;
+    position: absolute;
+}
+.Frame2 {
+    width: 480px;
+    height: 80px;
+    left: 60px;
+    top: 564px;
+    position: absolute;
+}
+.Rectangle4 {
+    width: 480px;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    opacity: 0.60;
+    background: white;
+}
