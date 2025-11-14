@@ -1,141 +1,283 @@
-/* Main Login Menu Container */
+/* ===== Root Responsive Units ===== */
+:root {
+    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+/* ===== Main Login Menu Container ===== */
 .LoginMenu {
-    width: 600px;
-    height: 1400px;
+    width: 375px;
+    height: 100vh;
+    max-height: 100vh;
     position: relative;
     background: black;
     overflow: hidden;
-}
-
-/* Close Button Vector */
-.Vector {
-    left: 520px;
-    top: 48.05px;
-    position: absolute;
-}
-
-/* LOGIN Title */
-.Login {
-    left: 248px;
-    top: 45px;
-    position: absolute;
-    text-align: center;
-    justify-content: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* ===== Close Button Vector ===== */
+.Vector {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.Vector svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ===== LOGIN Title ===== */
+.Login {
+    margin-top: 1rem;
+    text-align: center;
     color: white;
-    font-size: 32px;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     font-family: 'Haas Grot Text Trial', sans-serif;
     font-weight: 500;
     word-wrap: break-word;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* ID Label */
+/* ===== ID Section ===== */
 .Id {
-    left: 60px;
-    top: 200px;
-    position: absolute;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+    margin-top: 2.4rem;
+    margin-bottom: 0.3rem;
     color: white;
-    font-size: 60px;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     font-family: 'Haas Grot Text Trial', sans-serif;
     font-weight: 400;
     word-wrap: break-word;
+    text-align: center;
+    width: 100%;
 }
 
-/* PW Label */
-.Pw {
-    left: 60px;
-    top: 472px;
-    position: absolute;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    font-size: 60px;
-    font-family: 'Haas Grot Text Trial', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
-/* ID Input Background */
+/* ===== ID Input Background ===== */
 .Rectangle1 {
-    width: 480px;
-    height: 80px;
-    left: 60px;
-    top: 292px;
-    position: absolute;
+    width: min(75%, 280px);
+    height: clamp(2rem, 8vh, 3rem);
+    margin: 0 auto;
+    margin-bottom: 1.2rem;
     opacity: 0.60;
     background: white;
-    border-radius: 12px;
+    border-radius: 0.5rem;
 }
 
-/* PW Input Background */
+/* ===== PW Section ===== */
+.Pw {
+    margin-top: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: white;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-family: 'Haas Grot Text Trial', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    text-align: center;
+    width: 100%;
+}
+
+/* ===== PW Input Background ===== */
 .Rectangle2 {
-    width: 480px;
-    height: 80px;
-    left: 60px;
-    top: 564px;
-    position: absolute;
+    width: min(75%, 280px);
+    height: clamp(2rem, 8vh, 3rem);
+    margin: 0 auto;
+    margin-bottom: 1.2rem;
     opacity: 0.60;
     background: white;
-    border-radius: 12px;
+    border-radius: 0.5rem;
 }
 
-/* Sign In Button Background */
+/* ===== Button Group Container ===== */
+.ButtonGroup {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.2rem;
+    padding: 0 0.6rem;
+    flex-wrap: wrap;
+}
+
+/* ===== Sign In Button Background ===== */
 .Rectangle3 {
-    width: 192px;
-    height: 80px;
-    left: 84px;
-    top: 744px;
-    position: absolute;
+    width: 100%;
+    height: 100%;
     opacity: 0.60;
     background: white;
-    border-radius: 12px;
+    border-radius: 0.75rem;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-/* Sign In Button Text */
+/* ===== Sign In Button Text ===== */
 .SignIn {
-    left: 119px;
-    top: 765px;
-    position: absolute;
     text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
     color: white;
-    font-size: 32px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-family: 'Haas Grot Text Trial', sans-serif;
     font-weight: 400;
     word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+    top: 0;
+    left: 0;
 }
 
-/* Sign Up Button Background */
+/* ===== Sign Up Button Background ===== */
 .Rectangle4 {
-    width: 192px;
-    height: 80px;
-    left: 324px;
-    top: 744px;
-    position: absolute;
+    width: 100%;
+    height: 100%;
     opacity: 0.60;
     background: white;
-    border-radius: 12px;
+    border-radius: 0.75rem;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-/* Sign Up Button Text */
+/* ===== Sign Up Button Text ===== */
 .SignUp {
-    left: 354px;
-    top: 765px;
-    position: absolute;
     text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
     color: white;
-    font-size: 32px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-family: 'Haas Grot Text Trial', sans-serif;
     font-weight: 400;
     word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+    top: 0;
+    left: 0;
+}
+
+/* ===== Tablet Adjustments (768px and above) ===== */
+@media (min-width: 768px) {
+    .LoginMenu {
+        width: 375px;
+        height: 100vh;
+    }
+
+    .Login {
+        margin-top: 1.2rem;
+        font-size: clamp(1.2rem, 3vw, 2rem);
+    }
+
+    .Id {
+        margin-top: 3rem;
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    .Pw {
+        margin-top: 2rem;
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    .Rectangle1,
+    .Rectangle2 {
+        width: min(75%, 280px);
+        height: 3rem;
+    }
+
+    .SignIn,
+    .SignUp {
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+    }
+}
+
+/* ===== Desktop Adjustments (1024px and above) ===== */
+@media (min-width: 1024px) {
+    .LoginMenu {
+        width: 375px;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .Vector {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .Login {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .Id {
+        margin-top: 2.4rem;
+        font-size: 2.5rem;
+    }
+
+    .Rectangle1,
+    .Rectangle2 {
+        width: min(75%, 280px);
+        height: 3rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .Pw {
+        margin-top: 1.2rem;
+        font-size: 2.5rem;
+    }
+
+    .SignIn,
+    .SignUp {
+        font-size: 1.5rem;
+    }
+
+    .Rectangle3,
+    .Rectangle4 {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* ===== Touch Device Optimization ===== */
+@media (hover: none) and (pointer: coarse) {
+    .Vector,
+    .SignIn,
+    .SignUp {
+        min-height: 2.75rem;
+        min-width: 2.75rem;
+    }
+}
+
+/* ===== Landscape Mode Adjustments ===== */
+@media (max-height: 600px) and (orientation: landscape) {
+    .LoginMenu {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .Id,
+    .Pw {
+        margin-top: 1.5rem;
+    }
 }
