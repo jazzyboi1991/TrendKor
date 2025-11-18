@@ -327,7 +327,7 @@ function initializeTitleGroupAnimation() {
     gsap.to(titleGraphicGroup, {
         scrollTrigger: {
             trigger: titleMaskContainer,
-            start: 'top 20%',
+            start: 'top 10%',
             end: 'top 10%',
             scrub: 1,
             markers: false
@@ -342,7 +342,7 @@ function initializeTitleGroupAnimation() {
     gsap.to(subtitleGraphicGroup, {
         scrollTrigger: {
             trigger: titleMaskContainer,
-            start: 'top 20%',
+            start: 'top 10%',
             end: 'top 10%',
             scrub: 1,
             markers: false
