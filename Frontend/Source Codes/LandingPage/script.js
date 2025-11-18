@@ -1,6 +1,24 @@
 // TrendKor Landing Page JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 반응형 뷰포트 감지
+    const viewport = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        isMobile: window.innerWidth < 768,
+        isTablet: window.innerWidth >= 768 && window.innerWidth < 1024,
+        isDesktop: window.innerWidth >= 1024
+    };
+
+    // 뷰포트 변화 감지
+    window.addEventListener('resize', () => {
+        viewport.width = window.innerWidth;
+        viewport.height = window.innerHeight;
+        viewport.isMobile = window.innerWidth < 768;
+        viewport.isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+        viewport.isDesktop = window.innerWidth >= 1024;
+    });
+
     // 로그인 모달 관련 함수들
     const loginModal = document.getElementById('login-modal');
     const loginButton = document.querySelector('.login-button');
@@ -15,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (loginModal) {
             loginModal.classList.add('active');
             document.body.style.overflow = 'hidden'; // 스크롤 방지
+            // 모바일에서 상단 여백 설정
+            if (viewport.isMobile) {
+                loginModal.style.paddingTop = '0';
+            }
             console.log('Login modal opened', loginModal.classList);
         } else {
             console.error('loginModal element not found');
@@ -61,6 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (menuModal) {
             menuModal.classList.add('active');
             document.body.style.overflow = 'hidden'; // 스크롤 방지
+            // 모바일에서 상단 여백 설정
+            if (viewport.isMobile) {
+                const menuContent = document.querySelector('.menu-modal-content');
+                if (menuContent) {
+                    menuContent.style.paddingTop = '1rem';
+                }
+            }
             console.log('Menu modal opened');
         }
     }
