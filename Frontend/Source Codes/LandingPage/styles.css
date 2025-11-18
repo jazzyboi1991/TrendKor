@@ -428,16 +428,16 @@ body {
     flex-shrink: 0;
 }
 
-/* 카드별 색상 */
+/* 카드별 색상 - 파란색과 빨간색 번갈아 나오기 */
 .card-1,
-.card-2,
-.card-6 {
+.card-3,
+.card-5 {
     background: var(--color-blue);
 }
 
-.card-3,
+.card-2,
 .card-4,
-.card-5 {
+.card-6 {
     background: var(--color-red);
 }
 
