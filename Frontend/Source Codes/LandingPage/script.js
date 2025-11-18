@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
         viewport.isDesktop = window.innerWidth >= 1024;
     });
 
+    // 카드 infinite scroll 설정
+    initializeInfiniteScroll();
+
     // 타이틀 그룹 애니메이션 설정
     initializeTitleGroupAnimation();
 
@@ -306,6 +309,47 @@ function removeError(event) {
 
     input.removeAttribute('aria-invalid');
     input.classList.remove('input-error');
+}
+
+/**
+ * 카드 Infinite Scroll 초기화
+ */
+function initializeInfiniteScroll() {
+    const cardsWrapper = document.querySelector('.cards-wrapper');
+
+    if (!cardsWrapper) {
+        return;
+    }
+
+    // 카드를 복제하여 끝없는 스크롤 효과 생성
+    const cards = cardsWrapper.querySelectorAll('.card');
+    const totalCards = cards.length;
+
+    // 원본 카드들을 복제하여 추가 (smooth한 무한 루프를 위해)
+    cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        cardsWrapper.appendChild(clone);
+    });
+
+    // 호버 시 애니메이션 일시 중지 기능 (CSS에서 처리됨)
+    cardsWrapper.addEventListener('mouseenter', function() {
+        this.style.animationPlayState = 'paused';
+    });
+
+    cardsWrapper.addEventListener('mouseleave', function() {
+        this.style.animationPlayState = 'running';
+    });
+
+    // 터치 디바이스 지원
+    cardsWrapper.addEventListener('touchstart', function() {
+        this.style.animationPlayState = 'paused';
+    });
+
+    cardsWrapper.addEventListener('touchend', function() {
+        this.style.animationPlayState = 'running';
+    });
+
+    console.log('Infinite scroll initialized for cards');
 }
 
 /**

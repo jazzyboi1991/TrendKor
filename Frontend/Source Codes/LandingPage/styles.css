@@ -98,7 +98,7 @@ body {
 /* 메인 컨테이너 */
 .main-page {
     width: 100%;
-    height: 190.156vw;
+    height: 185.489vw;
     position: relative;
     background: var(--color-white);
     margin: 0;
@@ -380,12 +380,43 @@ body {
     text-align: center;
 }
 
+/* 카드 컨테이너 - Infinite Scroll */
+.cards-container {
+    width: 100%;
+    height: 31.250vw;
+    position: absolute;
+    top: 94.948vw;
+    left: 0;
+    overflow: hidden;
+}
+
+.cards-wrapper {
+    display: flex;
+    gap: 2.083vw;
+    padding: 0 5.156vw;
+    height: 100%;
+    animation: infiniteScroll 30s linear infinite;
+    will-change: transform;
+}
+
+@keyframes infiniteScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.cards-wrapper:hover {
+    animation-play-state: paused;
+}
+
 /* 카드 공통 스타일 */
 .card {
     width: 33.333vw;
     height: 31.250vw;
-    position: absolute;
-    top: 94.948vw;
+    position: relative;
     border-radius: 1.250vw;
     border: 0.052vw solid var(--color-white);
     box-shadow: 0.156vw 0.208vw 0.208vw 0.104vw rgba(128, 128, 128, 0.30);
@@ -394,37 +425,20 @@ body {
     align-items: center;
     padding: 1.667vw;
     justify-content: flex-start;
+    flex-shrink: 0;
 }
 
-/* 카드별 위치 및 색상 */
-.card-1 {
-    left: 15.000vw;
-    background: var(--color-blue);
-}
-
-.card-2 {
-    left: 88.333vw;
-    background: var(--color-blue);
-}
-
-.card-3 {
-    left: 51.667vw;
-    background: var(--color-red);
-}
-
-.card-4 {
-    left: 125.000vw;
-    background: var(--color-red);
-}
-
-.card-5 {
-    left: -21.667vw;
-    background: var(--color-red);
-}
-
+/* 카드별 색상 */
+.card-1,
+.card-2,
 .card-6 {
-    left: -58.333vw;
     background: var(--color-blue);
+}
+
+.card-3,
+.card-4,
+.card-5 {
+    background: var(--color-red);
 }
 
 /* 카드 내부 요소들 */
@@ -466,7 +480,7 @@ body {
     height: 52.083vw;
     position: absolute;
     left: 0;
-    top: 134.740vw;
+    top: 130.073vw;
     background: var(--color-white);
     border: 0.052vw solid var(--color-black);
 }
@@ -476,7 +490,7 @@ body {
     height: 0.156vw;
     position: absolute;
     left: 50%;
-    top: 137.865vw;
+    top: 133.198vw;
     transform: translateX(-50%);
     background: var(--color-black);
     outline: 0.156vw solid var(--color-black);
@@ -486,7 +500,7 @@ body {
     width: 28.333vw;
     position: absolute;
     left: 50%;
-    top: 139.531vw;
+    top: 134.864vw;
     transform: translateX(-50%);
     text-align: center;
     display: flex;
@@ -502,7 +516,7 @@ body {
     height: 20.833vw;
     position: absolute;
     left: 50%;
-    top: 145.156vw;
+    top: 140.489vw;
     transform: translateX(-50%);
     background: var(--color-light-blue);
 }
@@ -511,7 +525,7 @@ body {
     width: 52.708vw;
     position: absolute;
     left: 50%;
-    top: 173.281vw;
+    top: 168.614vw;
     transform: translateX(-50%);
     text-align: center;
     display: flex;
@@ -557,7 +571,7 @@ html {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 190.156vw;
+    top: 185.489vw;
     max-width: 1920px;
 }
 
