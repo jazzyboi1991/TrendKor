@@ -130,6 +130,7 @@ body {
     transform: translateX(-50%);
     margin: 0 auto;
     /* GSAP가 애니메이션 제어 - transition 제거 */
+    will-change: transform, opacity;
 }
 
 .title-graphic-group {

@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
         viewport.isDesktop = window.innerWidth >= 1024;
     });
 
+    // 타이틀 그룹 애니메이션 설정
+    initializeTitleGroupAnimation();
+
     // 로그인 모달 관련 함수들
     const loginModal = document.getElementById('login-modal');
     const loginButton = document.querySelector('.login-button');
@@ -303,4 +306,50 @@ function removeError(event) {
 
     input.removeAttribute('aria-invalid');
     input.classList.remove('input-error');
+}
+
+/**
+ * 타이틀 그룹 애니메이션 설정
+ * 빨간색과 파란색 타이틀이 스크롤 시 동시에 위아래로 사라지는 효과
+ */
+function initializeTitleGroupAnimation() {
+    const titleGraphicGroup = document.querySelector('.title-graphic-group');
+    const subtitleGraphicGroup = document.querySelector('.subtitle-graphic-group');
+    const titleMaskContainer = document.querySelector('.title-mask-container');
+
+    if (!titleGraphicGroup || !subtitleGraphicGroup || !titleMaskContainer || typeof gsap === 'undefined') {
+        return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 타이틀 그룹 애니메이션 (위로 사라짐)
+    gsap.to(titleGraphicGroup, {
+        scrollTrigger: {
+            trigger: titleMaskContainer,
+            start: 'top 20%',
+            end: 'top 10%',
+            scrub: 1,
+            markers: false
+        },
+        y: -150,
+        opacity: 0,
+        duration: 1,
+        ease: 'power1.inOut'
+    });
+
+    // 서브타이틀 그룹 애니메이션 (아래로 사라짐)
+    gsap.to(subtitleGraphicGroup, {
+        scrollTrigger: {
+            trigger: titleMaskContainer,
+            start: 'top 20%',
+            end: 'top 10%',
+            scrub: 1,
+            markers: false
+        },
+        y: 150,
+        opacity: 0,
+        duration: 1,
+        ease: 'power1.inOut'
+    });
 }
