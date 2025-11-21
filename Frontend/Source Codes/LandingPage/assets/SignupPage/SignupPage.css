@@ -26,6 +26,7 @@ body {
     top: 48px;
     position: absolute;
     cursor: pointer;
+    transition: opacity 0.2s ease;
 }
 
 .Vector svg path {
@@ -33,7 +34,16 @@ body {
 }
 
 .Vector:hover {
-    opacity: 0.8;
+    animation: spinRotate 0.6s ease-in-out;
+}
+
+@keyframes spinRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .Title {
@@ -111,6 +121,12 @@ body {
     height: 80px;
     left: 204px;
     top: 1016px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.Rectangle4:hover {
+    opacity: 0.8;
 }
 
 .ButtonText {
@@ -125,4 +141,10 @@ body {
     font-size: 32px;
     font-weight: 400;
     word-wrap: break-word;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.ButtonText:hover {
+    opacity: 0.8;
 }

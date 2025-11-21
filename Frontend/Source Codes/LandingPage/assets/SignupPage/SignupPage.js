@@ -257,6 +257,18 @@ if (submitButton) {
         e.preventDefault();
         handleSignup();
     });
+    // Add cursor pointer style
+    submitButton.style.cursor = 'pointer';
+}
+
+// Submit text functionality
+const submitText = document.getElementById('submitText');
+if (submitText) {
+    submitText.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleSignup();
+    });
+    submitText.style.cursor = 'pointer';
 }
 
 // Initialize when DOM is loaded
