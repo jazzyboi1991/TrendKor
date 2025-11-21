@@ -32,10 +32,19 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserLoginRequest request){
+    public ResponseEntity<?> login(@RequestBody UserLoginRequest request){
         try{
-            String message = userService.login(request);
-            return ResponseEntity.ok(message);
+            UserData user = userService.login(request);
+            // 로그인 성공 시 nickname을 포함한 JSON 응답 반환
+            // nickname이 null이거나 빈 문자열이면 username 사용
+            String nickname = user.getNickname();
+            if (nickname == null || nickname.trim().isEmpty()) {
+                nickname = user.getUsername();
+            }
+            java.util.Map<String, String> response = new java.util.HashMap<>();
+            response.put("message", "로그인 성공!");
+            response.put("nickname", nickname);
+            return ResponseEntity.ok(response);
         } catch(IllegalArgumentException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "uers")
+@Table(name = "users")
 public class UserData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,13 @@ public class UserData {
     @Column(nullable = false)
     private String password;
 
-    public UserData(String username, String password) {
+    @Column(nullable = false)
+    private String nickname;
+
+    public UserData(String username, String password, String nickname) {
         this.username = username;
         this.password = password;
+        this.nickname = nickname;
     }
 
 }
