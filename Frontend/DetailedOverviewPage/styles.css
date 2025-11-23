@@ -92,15 +92,12 @@ body {
     left: 100px;
     top: 1320px;
     width: 1820px;
-    height: 100px;
     display: flex;
     gap: 40px;
-    justify-content: flex-start;
 }
 
 .year-button {
-    width: 400px;
-    height: 100px;
+    border: none;
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -110,108 +107,115 @@ body {
     font-weight: 400;
     cursor: pointer;
     transition: transform 0.3s ease;
-    border: none;
     font-family: "Haas Grot Text Trial", sans-serif;
+}
+
+.year-button--red {
+    background: #bb5151;
+    width: 400px;
+    height: 100px;
+}
+
+.year-button--blue {
+    background: #515dbb;
+    width: 401px;
+    height: 100px;
 }
 
 .year-button:hover {
     transform: scale(1.05);
 }
 
-.year-button--red {
-    background: #bb5151;
-}
-
-.year-button--blue {
-    background: #515dbb;
-    width: 401px;
-}
-
-/* Meme Cards Container */
-.meme-cards-container {
+/* Card Container */
+.card-container {
     position: absolute;
-    left: 0px;
-    top: 1520px;
-    width: 1920px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 80px;
-    padding: 0 100px;
+    width: 840px;
+    height: 1067px;
 }
 
-/* Meme Card */
-.meme-card {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-image {
+.Rectangle6 {
     width: 840px;
     height: 800px;
+    position: absolute;
     background: #f1f1f1;
-    border-radius: 32px 32px 0 0;
-    position: relative;
+    border-radius: 32px;
+    top: 0;
+    left: 0;
     overflow: hidden;
 }
 
-.card-image svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-image-overlay {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 120px;
-    height: 120px;
-    background: white;
-}
-
-.card-image-overlay svg {
+.Rectangle6 svg {
     width: 100%;
     height: 100%;
 }
 
-.card-info {
+.Rectangle7 {
     width: 840px;
     height: 267px;
+    position: absolute;
     background: #d9d9d9;
-    border-radius: 0 0 32px 32px;
-    padding: 0 30px;
+    border-bottom-right-radius: 32px;
+    border-bottom-left-radius: 32px;
+    top: 800px;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-}
-
-.card-title {
-    color: black;
-    font-size: 48px;
-    font-weight: 500;
-    word-wrap: break-word;
-    flex: 1;
-}
-
-.card-views {
-    width: 171.5px;
-    text-align: right;
-    color: black;
-    font-size: 40px;
-    font-weight: 500;
+    padding: 0 30px;
 }
 
 .card-profile {
-    position: absolute;
-    left: 64px;
     width: 80px;
     height: 80px;
+    position: absolute;
+    left: 64px;
+    top: 800px;
     border-radius: 50%;
     overflow: hidden;
 }
 
 .card-profile svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ThisIsTheTitle {
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-size: 48px;
+    font-weight: 500;
+    word-wrap: break-word;
+    width: 506.33px;
+    left: 267px;
+}
+
+.NViews {
+    width: 171.5px;
+    position: absolute;
+    text-align: right;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-size: 40px;
+    font-weight: 500;
+    word-wrap: break-word;
+    right: 30px;
+}
+
+.card-image-overlay {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: 0;
+    bottom: 0;
+}
+
+.card-image-overlay svg {
     width: 100%;
     height: 100%;
 }
