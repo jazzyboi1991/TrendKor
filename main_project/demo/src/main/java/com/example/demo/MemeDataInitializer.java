@@ -80,11 +80,41 @@ public class MemeDataInitializer implements ApplicationRunner {
                 "/test5"
             );
 
+            MemeData meme2023_M1 = new MemeData(
+                "2023",
+                "너 T야",
+                "Are you a T?",
+                "코미디 유튜브 채널 밈고리즘의 폭스클립 콘텐츠에서 스케치 코미디를 연기하던 중 상대방이 감정적인 공감을 해주지 않고 논리적으로만 말하거나 무뚝뚝하게 반응할 때, 특유의 표정과 말투로 너 T야?라고 묻는 모습이 큰 화제가 되어서 유래가 되었습니다.",
+                "Comedy It originated from the Fox Clip content of the YouTube channel MemeGorism, when the other person did not give emotional empathy and only spoke logically or reacted bluntly, asking, \"Are you T?\" with a unique expression and tone.",
+                "한국 사회에서 F형들이 T형들의 직설적인 화법에 상처를 받거나 서운함을 느끼는 상황이 자주 밈으로 소비되었는데, 이 밈은 \"너 공감 능력 없지?\" 혹은 \"왜 이렇게 눈치가 없어?\"라는 말을 \"너 T야?\"라는 짧은 문장으로 압축해서 표현한 것입니다.",
+                "In Korean society, situations in which F-type people were hurt or disappointed by T-type people's straightforward speech were often consumed as memes, which encapsulated the words \\\"You're not good at empathy, right?\" or \\\"Why are you so tactless?\" into a short sentence \\\"Are you T?\"",
+                "\"나 오늘 너무 우울해서 빵 샀어...\" \"무슨 빵 샀는데?\"  \"...야, 너 T야?\"",
+                "\\\"I was so depressed today that I bought bread...\" \\\"What bread did you buy? \\\"...Hey, are you a T?\"",
+                "test6"
+            );
+
+            MemeData meme2023_M2 = new MemeData(
+                "2023",
+                "암오케이 암파인 괜찮아 닝닝닝닝닝",
+                "Okay, I'm fine. Ningning, Ning, Ning, Ning, Ning",
+                "인도네시아 스트리머 알딘이 스트리밍 중 게임에서 차가 부서지는 상황이 생기는데 그때 알딘이 모 한류 드라마의 개그씬이나 그 유명한 곡조를 배경으로 애써 한국말로 괜찮아를 반복하면서 우는 ",
+                "Comedy It originated from the Fox Clip content of the YouTube channel MemeGorism, when the other person did not give emotional empathy and only spoke logically or reacted bluntly, asking, \"Are you T?\" with a unique expression and tone.",
+                "한국 사회에서 F형들이 T형들의 직설적인 화법에 상처를 받거나 서운함을 느끼는 상황이 자주 밈으로 소비되었는데, 이 밈은 \"너 공감 능력 없지?\" 혹은 \"왜 이렇게 눈치가 없어?\"라는 말을 \"너 T야?\"라는 짧은 문장으로 압축해서 표현한 것입니다.",
+                "In Korean society, situations in which F-type people were hurt or disappointed by T-type people's straightforward speech were often consumed as memes, which encapsulated the words \\\"You're not good at empathy, right?\" or \\\"Why are you so tactless?\" into a short sentence \\\"Are you T?\"",
+                "\"나 오늘 너무 우울해서 빵 샀어...\" \"무슨 빵 샀는데?\"  \"...야, 너 T야?\"",
+                "\\\"I was so depressed today that I bought bread...\" \\\"What bread did you buy? \\\"...Hey, are you a T?\"",
+                "test6"
+            );
+
+
             memeDataRepository.save(meme2022_M1);
             memeDataRepository.save(meme2022_M2);
             memeDataRepository.save(meme2022_M3);
             memeDataRepository.save(meme2022_M4);
             memeDataRepository.save(meme2022_M5);
+
+            memeDataRepository.save(meme2023_M1);
+            memeDataRepository.save(meme2023_M2);
         }
 
     }
