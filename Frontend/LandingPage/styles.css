@@ -215,6 +215,8 @@ body {
     border-radius: 0.417vw;
     transition: all 0.3s ease;
     white-space: nowrap;
+    pointer-events: auto;
+    user-select: none;
 }
 
 .menu-text {
@@ -229,6 +231,8 @@ body {
     padding: 0.521vw 1.042vw;
     border-radius: 0.417vw;
     transition: all 0.3s ease;
+    pointer-events: auto;
+    user-select: none;
 }
 
 /* 비디오 배경 */
@@ -658,14 +662,14 @@ html {
 
 .login-modal-content {
     width: 100%;
-    max-width: clamp(300px, 90vw, 600px);
+    max-width: clamp(15.625vw, 90vw, 31.25vw);
     height: 100vh;
     background: black;
     border-radius: 0;
     position: fixed;
     top: 0;
     right: 0;
-    padding: clamp(1.25rem, 4%, 2rem) clamp(1.25rem, 4%, 2rem) clamp(1.25rem, 4%, 2rem) clamp(1.25rem, 4%, 2rem);
+    padding: clamp(1.042vw, 4%, 1.667vw) clamp(1.042vw, 4%, 1.667vw) clamp(1.042vw, 4%, 1.667vw) clamp(1.042vw, 4%, 1.667vw);
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -682,22 +686,6 @@ html {
     transform: translateX(0);
 }
 
-/* 태블릿 크기 (768px 이상) */
-@media (min-width: 768px) {
-    .login-modal-content {
-        max-width: 600px;
-        padding: clamp(1.5rem, 5%, 2rem);
-        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
-    }
-}
-
-/* 대형 화면 (1024px 이상) */
-@media (min-width: 1024px) {
-    .login-modal-content {
-        max-width: 700px;
-    }
-}
-
 /* ============================================
    Close Button (Modal Version)
    ============================================ */
@@ -712,8 +700,8 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(28px, 7vw, 40px);
-    height: clamp(28px, 7vw, 40px);
+    width: clamp(1.458vw, 7vw, 2.083vw);
+    height: clamp(1.458vw, 7vw, 2.083vw);
     padding: 0;
     transition: opacity 0.2s ease;
     z-index: 1005;
@@ -760,7 +748,7 @@ html {
 .login-modal .login-form {
     display: flex;
     flex-direction: column;
-    gap: clamp(1.042vw, 4%, 1.563vw);
+    gap: clamp(1.042vw, 3%, 1.563vw);
     width: 100%;
     padding: 0 clamp(0.417vw, 2%, 0.833vw);
 }
@@ -819,10 +807,11 @@ html {
 }
 
 .login-modal .error-message {
-    font-size: clamp(12px, 2vw, 14px);
+    font-size: clamp(11px, 2.5vw, 13px);
     color: #ff6b6b;
-    margin-top: clamp(0.25rem, 1%, 0.5rem);
+    margin-top: clamp(0.25rem, 0.5%, 0.5rem);
     animation: slideDown 0.3s ease;
+    line-height: 1.4;
 }
 
 /* 에러 메시지 애니메이션 */
@@ -874,53 +863,6 @@ html {
     letter-spacing: 0.05em;
 }
 
-/* 초소형 모바일 (320px - 480px) */
-@media (max-width: 480px) {
-    .login-modal .button-group {
-        grid-template-columns: 1fr;
-        gap: clamp(0.521vw, 3%, 0.833vw);
-    }
-
-    .login-modal .login-title {
-        font-size: clamp(1.042vw, 5.5vw, 1.458vw);
-        margin-bottom: clamp(0.833vw, 3%, 1.042vw);
-    }
-
-    .login-modal .form-label {
-        font-size: clamp(0.729vw, 3.5vw, 0.833vw);
-    }
-
-    .login-modal .form-input,
-    .login-modal .btn {
-        height: clamp(2.083vw, 11vw, 2.604vw);
-    }
-}
-
-/* 소형 모바일 (480px - 768px) */
-@media (min-width: 480px) and (max-width: 768px) {
-    .login-modal-content {
-        padding: clamp(1.25rem, 3.5%, 1.5rem);
-    }
-
-    .login-modal .button-group {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-/* 랜드스케이프 모바일 (높이 제약) */
-@media (max-height: 600px) {
-    .login-modal .login-form {
-        gap: clamp(0.521vw, 2%, 1.042vw);
-    }
-
-    .login-modal .form-group {
-        gap: clamp(0.208vw, 1%, 0.417vw);
-    }
-
-    .login-modal .button-group {
-        margin-top: clamp(0.417vw, 2%, 0.833vw);
-    }
-}
 
 .login-modal .btn:hover {
     background: rgba(255, 255, 255, 0.8);

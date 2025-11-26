@@ -10,6 +10,130 @@
     /* 폰트 */
     --font-family: 'Neue Haas Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
 }
+/* ===== Navigation Bar Styles (from LandingPage) ===== */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 5.2vw;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5.156vw;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.104vw 0.521vw rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+/* 로고 */
+.logo {
+    width: 5.394vw;
+    height: 5.394vw;
+    min-width: 2.604vw;
+    min-height: 2.604vw;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin: 0;
+    padding: 0;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* 메뉴 컨테이너 */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2.604vw;
+    margin: 0;
+    padding: 0;
+}
+
+/* 메뉴 버튼들 */
+.login-button {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-black);
+    font-size: clamp(16px, 1.667vw, 32px);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.521vw 1.042vw;
+    margin: 0;
+    border-radius: 0.417vw;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    pointer-events: auto;
+    user-select: none;
+    border: none;
+    background: transparent;
+}
+
+.menu-text {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-black);
+    font-size: clamp(16px, 1.667vw, 32px);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.521vw 1.042vw;
+    margin: 0;
+    border-radius: 0.417vw;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    user-select: none;
+    border: none;
+    background: transparent;
+}
+
+.login-button:hover {
+    color: var(--color-red);
+    background: rgba(198, 12, 48, 0.1);
+}
+
+.menu-text:hover {
+    color: var(--color-dark-blue);
+    background: rgba(0, 71, 173, 0.1);
+}
+
+/* 반응형 네비게이션 바 */
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 1.5vw 4vw;
+        min-height: 70px;
+    }
+    
+    .logo {
+        width: 12vw;
+        height: 12vw;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    
+    .nav-menu {
+        gap: 4vw;
+    }
+    
+    .login-button,
+    .menu-text {
+        font-size: clamp(14px, 3vw, 20px);
+        padding: 1vw 2vw;
+    }
+}
+
+
+
+
+
 
 * {
     margin: 0;
@@ -86,6 +210,7 @@ body {
     align-items: center;
     gap: 2.604vw;
     z-index: 1001;
+    pointer-events: auto;
 }
 
 .MenuText {
@@ -100,6 +225,8 @@ body {
     padding: 0.521vw 1.042vw;
     border-radius: 0.417vw;
     transition: all 0.3s ease;
+    pointer-events: auto;
+    user-select: none;
 }
 
 .LoginButton {
@@ -115,6 +242,8 @@ body {
     border-radius: 0.417vw;
     transition: all 0.3s ease;
     white-space: nowrap;
+    pointer-events: auto;
+    user-select: none;
 }
 
 /* Logo */
@@ -144,7 +273,7 @@ body {
 /* Hero Section */
 .Vector-hero {
     left: 0px;
-    top: 5.2vw;
+    top: 0;
     position: absolute;
     width: 100%;
 }
@@ -158,12 +287,13 @@ body {
 /* Memes Title */
 .Memes {
     left: 5.2%;
-    top: 56vw;
+    top: 50.8vw;
     position: absolute;
     color: white;
     font-size: clamp(32px, 6.25vw, 120px);
     font-weight: 500;
     font-family: var(--font-family);
+    transform: translateY(-30px);
 }
 
 /* Year Buttons */
@@ -420,22 +550,14 @@ svg {
 
 .login-modal .login-title {
     text-align: center;
-    font-size: clamp(1.146vw, 6vw, 1.875vw);
+    font-size: clamp(1.25vw, 5vw, 1.667vw);
     font-weight: 500;
     letter-spacing: 0.05em;
-    margin-bottom: clamp(0.833vw, 3%, 1.042vw);
-    margin-top: clamp(0.417vw, 2%, 0.833vw);
+    margin-bottom: clamp(0.833vw, 3%, 1.667vw);
     line-height: 1.2;
     color: white;
     flex-shrink: 0;
     z-index: 5;
-}
-
-@media (max-width: 480px) {
-    .login-modal .login-title {
-        font-size: clamp(1.042vw, 5.5vw, 1.458vw);
-        margin-bottom: clamp(0.833vw, 3%, 1.042vw);
-    }
 }
 
 .login-modal .login-form {
@@ -451,11 +573,11 @@ svg {
 .login-modal .form-group {
     display: flex;
     flex-direction: column;
-    gap: clamp(0.417vw, 2%, 0.521vw);
+    gap: clamp(0.417vw, 2%, 0.833vw);
 }
 
 .login-modal .form-label {
-    font-size: clamp(0.833vw, 4vw, 1.042vw);
+    font-size: clamp(0.938vw, 3.5vw, 1.667vw);
     font-weight: 400;
     letter-spacing: 0.02em;
     line-height: 1.2;
@@ -465,12 +587,12 @@ svg {
 
 .login-modal .form-input {
     width: 100%;
-    height: clamp(2.292vw, 10vw, 3.125vw);
+    height: clamp(2.604vw, 8%, 4.167vw);
     padding: clamp(0.521vw, 2%, 0.833vw);
     background: rgba(255, 255, 255, 0.6);
     border: 2px solid transparent;
-    border-radius: clamp(0.417vw, 1.5%, 0.656vw);
-    font-size: clamp(0.729vw, 3vw, 0.833vw);
+    border-radius: clamp(0.417vw, 2%, 0.625vw);
+    font-size: clamp(0.729vw, 2.5vw, 0.938vw);
     color: #333;
     font-family: inherit;
     transition: all 0.3s ease;
@@ -512,18 +634,18 @@ svg {
 .login-modal .button-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(0.521vw, 3%, 1.042vw);
-    margin-top: clamp(0.833vw, 4%, 1.042vw);
+    gap: clamp(0.833vw, 4%, 1.667vw);
+    margin-top: clamp(0.417vw, 3%, 1.042vw);
     padding: 0 clamp(0.417vw, 2%, 0.833vw);
 }
 
 .login-modal .btn {
     padding: clamp(0.521vw, 2%, 0.833vw);
-    height: clamp(2.292vw, 10vw, 3.125vw);
+    height: clamp(2.604vw, 8%, 4.167vw);
     background: rgba(255, 255, 255, 0.6);
     border: 2px solid transparent;
-    border-radius: clamp(0.417vw, 1.5%, 0.656vw);
-    font-size: clamp(0.625vw, 3vw, 0.833vw);
+    border-radius: clamp(0.417vw, 2%, 0.625vw);
+    font-size: clamp(0.729vw, 2.2vw, 1.25vw);
     font-weight: 400;
     color: white;
     cursor: pointer;
