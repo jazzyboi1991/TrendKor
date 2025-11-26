@@ -573,6 +573,22 @@ svg {
     transform: translateX(0);
 }
 
+/* 태블릿 크기 (768px 이상) */
+@media (min-width: 768px) {
+    .menu-modal-content {
+        max-width: 600px;
+        padding: clamp(1.5rem, 5%, 2rem);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* 대형 화면 (1024px 이상) */
+@media (min-width: 1024px) {
+    .menu-modal-content {
+        max-width: 700px;
+    }
+}
+
 .menu-close-btn {
     position: fixed;
     top: clamp(0.75rem, 3%, 1.5rem);
@@ -583,8 +599,8 @@ svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(24px, 6vw, 40px);
-    height: clamp(24px, 6vw, 40px);
+    width: clamp(28px, 7vw, 40px);
+    height: clamp(28px, 7vw, 40px);
     padding: 0;
     transition: opacity 0.2s ease;
     z-index: 1005;
@@ -665,7 +681,74 @@ svg {
 .menu-year-2022 {
     margin-bottom: clamp(0.75rem, 2vh, 1rem);
     font-size: clamp(1.1rem, 5vw, 2rem);
-    font-weight: 400;
+}
+
+/* 모바일 최적화 (480px 이하) */
+@media (max-width: 480px) {
+    .menu-item {
+        padding: clamp(0.5rem, 2%, 0.75rem) clamp(0.6rem, 2.5%, 1rem);
+    }
+
+    .menu-home {
+        margin-top: clamp(1.5rem, 8vh, 2.5rem);
+    }
+}
+
+/* 태블릿 이상 (768px 이상) */
+@media (min-width: 768px) {
+    .menu-item {
+        padding: 0.75rem clamp(1rem, 3%, 1.5rem);
+    }
+
+    .menu-home {
+        margin-top: clamp(3.5rem, 12vh, 5rem);
+    }
+}
+
+/* 초소형 모바일 메뉴 최적화 (480px 이하) */
+@media (max-width: 480px) {
+    .menu-modal-content {
+        max-width: clamp(240px, 85vw, 380px);
+    }
+
+    .menu-home {
+        margin-top: clamp(1.5rem, 8vh, 2.5rem);
+        font-size: clamp(1.1rem, 5.2vw, 2rem);
+    }
+
+    .menu-meme-year {
+        font-size: clamp(0.95rem, 3.8vw, 1.6rem);
+    }
+
+    .menu-year-2025,
+    .menu-year-2024,
+    .menu-year-2023,
+    .menu-year-2022 {
+        font-size: clamp(1rem, 4.8vw, 1.8rem);
+    }
+}
+
+/* 랜드스케이프 모바일 메뉴 (높이 제약) */
+@media (max-height: 500px) {
+    .menu-item {
+        padding: clamp(0.3rem, 1.5%, 0.5rem) clamp(0.6rem, 2%, 1rem);
+    }
+
+    .menu-home {
+        margin-top: clamp(1rem, 5vh, 1.5rem);
+        margin-bottom: clamp(0.5rem, 1.5vh, 0.75rem);
+    }
+
+    .menu-meme-year {
+        margin-bottom: clamp(0.5rem, 1.5vh, 0.75rem);
+    }
+
+    .menu-year-2025,
+    .menu-year-2024,
+    .menu-year-2023,
+    .menu-year-2022 {
+        margin-bottom: clamp(0.5rem, 1.5vh, 0.75rem);
+    }
 }
 
 /* Hamburger Menu Button (Optional) */
@@ -958,15 +1041,10 @@ svg {
 
     .menu-item {
         padding: 0.75rem clamp(1rem, 3%, 1.5rem);
-        font-size: clamp(1.2rem, 6vw, 2.3rem);
     }
 
     .menu-home {
         margin-top: clamp(3.5rem, 12vh, 5rem);
-    }
-
-    .menu-meme-year {
-        font-size: clamp(1rem, 4vw, 1.8rem);
     }
 }
 
@@ -997,14 +1075,6 @@ svg {
 
     .login-modal .btn:hover {
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    .menu-item {
-        font-size: 2.5rem;
-    }
-
-    .menu-meme-year {
-        font-size: 1.2rem;
     }
 }
 
