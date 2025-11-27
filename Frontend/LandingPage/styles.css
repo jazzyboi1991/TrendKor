@@ -675,10 +675,8 @@ body {
     gap: 0;
     justify-content: flex-start;
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
-    overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    scrollbar-gutter: stable;
     transform: translateX(100%);
     transition: transform var(--transition-modal);
     z-index: var(--z-modal);
@@ -687,6 +685,8 @@ body {
 /* 로그인 모달 특화 */
 .login-modal-content {
     max-width: 600px;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
     padding: 20px;
 }
 
@@ -932,6 +932,7 @@ body {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
     -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
