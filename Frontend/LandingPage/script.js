@@ -717,77 +717,34 @@ function initializeSignupModal() {
         return;
     }
 
-    createInputElements();
-    setupInputListeners();
+    setupSignupInputListeners();
     setupSignupEventListeners();
 }
 
 /**
- * 입력 필드 생성
+ * 입력 필드 리스너 설정 - SignupPage 버전
  */
-function createInputElements() {
-    const nicknameInput = document.getElementById("nicknameInput");
-    const idInput = document.getElementById("idInput");
-    const pwInput = document.getElementById("pwInput");
+function setupSignupInputListeners() {
+    const nicknameInput = document.querySelector('#user-nickname');
+    const idInput = document.querySelector('#user-id');
+    const pwInput = document.querySelector('#user-password');
 
-    // Nickname input
-    if (nicknameInput && !nicknameInput.querySelector("input")) {
-        const nicknameField = document.createElement("input");
-        nicknameField.type = "text";
-        nicknameField.id = "nicknameField";
-        nicknameField.style.cssText = `
-            width: 100%;
-            height: 100%;
-            padding: 0.5vw;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.04vw;
-            background: rgba(255, 255, 255, 0.9);
-            color: black;
-            box-sizing: border-box;
-            outline: none;
-        `;
-        nicknameInput.appendChild(nicknameField);
+    if (nicknameInput) {
+        nicknameInput.addEventListener('input', (e) => {
+            formData.nickname = e.target.value;
+        });
     }
 
-    // ID input
-    if (idInput && !idInput.querySelector("input")) {
-        const idField = document.createElement("input");
-        idField.type = "text";
-        idField.id = "idField";
-        idField.style.cssText = `
-            width: 100%;
-            height: 100%;
-            padding: 0.5vw;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.04vw;
-            background: rgba(255, 255, 255, 0.9);
-            color: black;
-            box-sizing: border-box;
-            outline: none;
-        `;
-        idInput.appendChild(idField);
+    if (idInput) {
+        idInput.addEventListener('input', (e) => {
+            formData.id = e.target.value;
+        });
     }
 
-    // Password input
-    if (pwInput && !pwInput.querySelector("input")) {
-        const pwField = document.createElement("input");
-        pwField.type = "password";
-        pwField.id = "pwField";
-        pwField.style.cssText = `
-            width: 100%;
-            height: 100%;
-            padding: 0.5vw;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.04vw;
-            background: rgba(255, 255, 255, 0.9);
-            color: black;
-            box-sizing: border-box;
-            outline: none;
-        `;
-        pwInput.appendChild(pwField);
+    if (pwInput) {
+        pwInput.addEventListener('input', (e) => {
+            formData.password = e.target.value;
+        });
     }
 }
 
@@ -848,32 +805,6 @@ function validatePassword(password) {
     return { valid: true, message: "" };
 }
 
-/**
- * 입력 필드 리스너 설정
- */
-function setupInputListeners() {
-    const nicknameField = document.getElementById("nicknameField");
-    const idField = document.getElementById("idField");
-    const pwField = document.getElementById("pwField");
-
-    if (nicknameField) {
-        nicknameField.addEventListener("input", (e) => {
-            formData.nickname = e.target.value;
-        });
-    }
-
-    if (idField) {
-        idField.addEventListener("input", (e) => {
-            formData.id = e.target.value;
-        });
-    }
-
-    if (pwField) {
-        pwField.addEventListener("input", (e) => {
-            formData.password = e.target.value;
-        });
-    }
-}
 
 /**
  * 전체 폼 유효성 검사
@@ -910,32 +841,34 @@ function handleSignup() {
     alert(`환영합니다, ${formData.nickname}님!\n회원가입이 완료되었습니다.`);
 
     resetForm();
-    closeSignupModal();
+    handleCloseSignupModal();
 }
 
 /**
- * 폼 리셋
+ * 폼 리셋 - SignupPage 버전
  */
 function resetForm() {
     formData.nickname = "";
     formData.id = "";
     formData.password = "";
 
-    const nicknameField = document.getElementById("nicknameField");
-    const idField = document.getElementById("idField");
-    const pwField = document.getElementById("pwField");
+    const nicknameInput = document.querySelector('#user-nickname');
+    const idInput = document.querySelector('#user-id');
+    const pwInput = document.querySelector('#user-password');
 
-    if (nicknameField) nicknameField.value = "";
-    if (idField) idField.value = "";
-    if (pwField) pwField.value = "";
+    if (nicknameInput) nicknameInput.value = "";
+    if (idInput) idInput.value = "";
+    if (pwInput) pwInput.value = "";
 }
 
 /**
- * 가입 이벤트 리스너 설정
+ * 가입 이벤트 리스너 설정 - SignupPage 버전
  */
 function setupSignupEventListeners() {
-    const submitButton = document.getElementById("submitButton");
-    const submitText = document.getElementById("submitText");
+    const submitButton = document.querySelector('.Rectangle4');
+    const submitText = document.querySelector('.SignUpButton');
+    const closeButton = document.querySelector('.Vector');
+    const backButton = document.querySelector('.Frame');
 
     if (submitButton) {
         submitButton.addEventListener("click", (e) => {
@@ -952,6 +885,30 @@ function setupSignupEventListeners() {
         });
         submitText.style.cursor = "pointer";
     }
+
+    if (closeButton) {
+        closeButton.addEventListener("click", handleCloseSignupModal);
+    }
+
+    if (backButton) {
+        backButton.addEventListener("click", handleCloseSignupModal);
+    }
+
+    // 엔터키로 회원가입
+    const inputs = [
+        document.querySelector('#user-nickname'),
+        document.querySelector('#user-id'),
+        document.querySelector('#user-password')
+    ];
+    inputs.forEach(input => {
+        if (input) {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleSignup();
+                }
+            });
+        }
+    });
 }
 
 // ==================== MENU MODAL MODULE ====================
