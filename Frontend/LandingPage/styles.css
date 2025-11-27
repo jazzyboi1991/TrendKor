@@ -8,7 +8,6 @@ Original Design: 1920px x 4000px
     font-family: 'Neue Haas Grotesk Text';
     src: url('./fonts/NeueHaasGrotText-55Roman-Trial.otf') format('opentype');
     font-weight: 400;
-    font-style: normal;
     font-display: swap;
 }
 
@@ -24,7 +23,6 @@ Original Design: 1920px x 4000px
     font-family: 'Neue Haas Grotesk Text';
     src: url('./fonts/NeueHaasGrotText-65Medium-Trial.otf') format('opentype');
     font-weight: 500;
-    font-style: normal;
     font-display: swap;
 }
 
@@ -40,7 +38,6 @@ Original Design: 1920px x 4000px
     font-family: 'Neue Haas Grotesk Text';
     src: url('./fonts/NeueHaasGrotText-75Bold-Trial.otf') format('opentype');
     font-weight: 700;
-    font-style: normal;
     font-display: swap;
 }
 
@@ -63,6 +60,7 @@ Original Design: 1920px x 4000px
 
     /* 폰트 */
     --font-family: 'Neue Haas Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-fallback: 'Haas Grot Text Trial', sans-serif;
 
     /* Border Radius */
     --radius-sm: 0.417vw;
@@ -87,6 +85,7 @@ Original Design: 1920px x 4000px
     --z-navbar: 1000;
     --z-modal: 1001;
     --z-modal-close: 1005;
+    --z-modal-offset: calc(var(--z-navbar) + 10);
 }
 
 /* 기본 리셋 */
@@ -96,25 +95,23 @@ Original Design: 1920px x 4000px
     box-sizing: border-box;
 }
 
-html {
+html,
+body {
     width: 100%;
     min-height: 100vh;
-    font-family: var(--font-family);
-    background: var(--color-white);
     margin: 0;
     padding: 0;
+    font-family: var(--font-family);
+    background: var(--color-white);
+}
+
+html {
     scroll-behavior: smooth;
 }
 
 body {
-    width: 100%;
-    min-height: 100vh;
     overflow-x: hidden;
     overflow-y: scroll;
-    font-family: var(--font-family);
-    background: var(--color-white);
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -319,26 +316,23 @@ body {
 }
 
 /* 라인들 */
-.line-1 {
-    width: 86.146vw;
-    height: 0.156vw;
-    position: absolute;
-    left: 50%;
-    top: 61.615vw;
-    transform: translateX(-50%);
-    background: var(--color-white);
-    outline: 0.156vw solid var(--color-white);
-}
-
+.line-1,
 .line-2 {
     width: 86.146vw;
     height: 0.156vw;
     position: absolute;
     left: 50%;
-    top: 77.031vw;
     transform: translateX(-50%);
     background: var(--color-white);
     outline: 0.156vw solid var(--color-white);
+}
+
+.line-1 {
+    top: 61.615vw;
+}
+
+.line-2 {
+    top: 77.031vw;
 }
 
 /* 섹션 타이틀 */
@@ -640,46 +634,69 @@ body {
 
 /* 공통 모달 배경 */
 .login-modal,
-.menu-modal {
+.menu-modal,
+.signup-modal {
     position: fixed;
     top: 0;
     right: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: var(--z-navbar);
     pointer-events: none;
     opacity: 0;
     transition: opacity var(--transition-modal);
 }
 
+.login-modal,
+.menu-modal {
+    z-index: var(--z-navbar);
+}
+
+.signup-modal {
+    z-index: var(--z-modal-offset);
+}
+
 .login-modal.show,
-.menu-modal.show {
+.menu-modal.show,
+.signup-modal.show {
     pointer-events: auto;
     opacity: 1;
 }
 
 /* 공통 모달 콘텐츠 */
 .login-modal-content,
-.menu-modal-content {
+.menu-modal-content,
+.signup-modal-content {
     width: 100%;
     height: 100vh;
     max-height: 100vh;
     background: black;
-    border-radius: 0;
     position: fixed;
     top: 0;
     right: 0;
     display: flex;
     flex-direction: column;
-    gap: 0;
     justify-content: flex-start;
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     transform: translateX(100%);
     transition: transform var(--transition-modal);
+}
+
+.login-modal-content,
+.menu-modal-content {
+    border-radius: 0;
+    gap: 0;
     z-index: var(--z-modal);
+}
+
+.signup-modal-content {
+    z-index: calc(var(--z-modal) + 10);
+    align-items: flex-start;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    padding: 0;
 }
 
 /* 로그인 모달 특화 */
@@ -720,45 +737,9 @@ body {
     transform: translateX(0);
 }
 
-/* Sign Up Modal Styles */
-.signup-modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: calc(var(--z-navbar) + 10);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity var(--transition-modal);
-}
-
-.signup-modal.show {
-    pointer-events: auto;
-    opacity: 1;
-}
-
+/* Sign Up Modal Styles - Width specification */
 .signup-modal-content {
     width: 31.25vw;
-    height: 100vh;
-    max-height: 100vh;
-    background: black;
-    position: fixed;
-    top: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-gutter: stable;
-    transform: translateX(100%);
-    transition: transform var(--transition-modal);
-    z-index: calc(var(--z-modal) + 10);
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
-    padding: 0;
 }
 
 .signup-modal.show .signup-modal-content {
@@ -816,80 +797,67 @@ body {
 }
 
 /* Sign Up Labels */
-.Nickname {
+.Nickname,
+.Id,
+.Pw {
     left: 10%;
-    top: 16.52%;
     position: absolute;
     justify-content: center;
     display: flex;
     flex-direction: column;
     color: white;
-    font-size: 2.5vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
+    font-family: var(--font-family-fallback);
     font-weight: 400;
     word-wrap: break-word;
+}
+
+.Nickname {
+    top: 16.52%;
+    font-size: 2.5vw;
+}
+
+.Id,
+.Pw {
+    font-size: 3.125vw;
 }
 
 .Id {
-    left: 10%;
     top: 36.46%;
-    position: absolute;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    font-size: 3.125vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
 }
 
 .Pw {
-    left: 10%;
     top: 57.41%;
-    position: absolute;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    color: white;
-    font-size: 3.125vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
 }
 
 /* Sign Up Input Rectangles */
-.Rectangle1 {
-    width: 80%;
-    height: 6.173%;
-    left: 10%;
-    top: 22.53%;
+.Rectangle1,
+.Rectangle2,
+.Rectangle3,
+.Rectangle4 {
     position: absolute;
     opacity: 0.6;
     background: white;
-    border-radius: 0.625vw;
+    border-radius: var(--radius-md);
 }
 
-.Rectangle2 {
-    width: 80%;
-    height: 6.173%;
-    left: 10%;
-    top: 43.52%;
-    position: absolute;
-    opacity: 0.6;
-    background: white;
-    border-radius: 0.625vw;
-}
-
+.Rectangle1,
+.Rectangle2,
 .Rectangle3 {
     width: 80%;
     height: 6.173%;
     left: 10%;
+}
+
+.Rectangle1 {
+    top: 22.53%;
+}
+
+.Rectangle2 {
+    top: 43.52%;
+}
+
+.Rectangle3 {
     top: 64.51%;
-    position: absolute;
-    opacity: 0.6;
-    background: white;
-    border-radius: 0.625vw;
 }
 
 /* Sign Up Submit Button */
@@ -898,10 +866,6 @@ body {
     height: 6.173%;
     left: 34%;
     top: 78.40%;
-    position: absolute;
-    opacity: 0.6;
-    background: white;
-    border-radius: 0.625vw;
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -944,22 +908,27 @@ body {
 
 /* 공통 닫기 버튼 */
 .modal-close-btn,
+.menu-close-btn,
+.close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.modal-close-btn,
 .menu-close-btn {
     position: fixed;
     top: clamp(0.75rem, 3%, 1.5rem);
     right: clamp(0.75rem, 3%, 1.5rem);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
     transition: opacity 0.2s ease;
     z-index: var(--z-modal-close);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     border-radius: 4px;
 }
 
@@ -1002,20 +971,10 @@ body {
 }
 
 .close-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 1.667vw;
     height: 1.719vw;
     transition: transform 0.6s ease;
     outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
 }
 
 .close-btn:hover {
@@ -1108,63 +1067,69 @@ body {
     position: absolute;
     opacity: 0.6;
     background: white;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
 }
 
-.id-input-box {
-    width: 25vw;
-    height: 3vw;
-    left: 3.125vw;
-    top: 12.5vw;
-}
-
+.id-input-box,
 .pw-input-box {
     width: 25vw;
     height: 3vw;
     left: 3.125vw;
+}
+
+.id-input-box {
+    top: 12.5vw;
+}
+
+.pw-input-box {
     top: 25.5vw;
 }
 
-.signin-btn-box {
-    width: 10vw;
-    height: 4.167vw;
-    left: 4.375vw;
-    top: 34vw;
-}
-
+.signin-btn-box,
 .signup-btn-box {
     width: 10vw;
     height: 4.167vw;
-    left: 16.875vw;
     top: 34vw;
 }
 
+.signin-btn-box {
+    left: 4.375vw;
+}
+
+.signup-btn-box {
+    left: 16.875vw;
+}
+
 /* Form Input */
-.form-input {
+.form-input,
+.signup-form-input {
     position: absolute;
     background: transparent;
     border: none;
     font-family: inherit;
     color: #333;
     outline: none;
+}
+
+.form-input {
     padding: 0;
     font-size: 1vw;
 }
 
-.id-input {
+.id-input,
+.pw-input {
     left: 3.125vw;
-    top: 12.5vw;
     width: 25vw;
     height: 3vw;
     padding: 0.3vw 0.3vw 0.3vw 0.6vw;
 }
 
+.id-input {
+    top: 12.5vw;
+}
+
 .pw-input {
-    left: 3.125vw;
     top: 25.5vw;
-    width: 25vw;
-    height: 3vw;
-    padding: 0.3vw 0.3vw 0.3vw 0.6vw;
 }
 
 .form-input::placeholder {
@@ -1183,37 +1148,30 @@ body {
 
 /* Sign Up Form Input Styles */
 .signup-form-input {
-    position: absolute;
-    background: transparent;
-    border: none;
-    font-family: inherit;
-    color: #333;
-    outline: none;
     padding: 0.5vw;
     font-size: 0.833vw;
     box-sizing: border-box;
     z-index: 2;
 }
 
-.nickname-input {
+.nickname-input,
+.signup-form-input.id-input,
+.password-input {
     left: 10%;
-    top: 22.53%;
     width: 80%;
     height: 6.173%;
+}
+
+.nickname-input {
+    top: 22.53%;
 }
 
 .signup-form-input.id-input {
-    left: 10%;
     top: 43.52%;
-    width: 80%;
-    height: 6.173%;
 }
 
 .password-input {
-    left: 10%;
     top: 64.51%;
-    width: 80%;
-    height: 6.173%;
 }
 
 .signup-form-input::placeholder {
@@ -1305,126 +1263,75 @@ body {
    Menu Modal/Sidebar Styles
    ============================================ */
 
-/* ===== HOME Title ===== */
-.Home {
+/* ===== Menu Item Base Styles ===== */
+.Home,
+.MemeOfTheYear,
+.Year2025,
+.Year2024,
+.Year2023,
+.Year2022 {
     position: absolute;
-    left: 17.03vw;
-    top: 7.29vw;
-    opacity: 0.40;
     text-align: right;
     color: white;
-    font-size: 3.75vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
+    font-family: var(--font-family-fallback);
     font-weight: 400;
     word-wrap: break-word;
     cursor: pointer;
     transition: opacity 0.3s ease;
+    opacity: 0.40;
 }
 
-.Home:hover {
+.Home:hover,
+.MemeOfTheYear:hover,
+.Year2025:hover,
+.Year2024:hover,
+.Year2023:hover,
+.Year2022:hover {
     opacity: 0.9;
+}
+
+/* ===== HOME Title ===== */
+.Home {
+    left: 17.03vw;
+    top: 7.29vw;
+    font-size: 3.75vw;
 }
 
 /* ===== MEME OF THE YEAR Title ===== */
 .MemeOfTheYear {
-    position: absolute;
     left: 11.93vw;
     top: 14.27vw;
     width: 16.25vw;
-    opacity: 0.40;
-    text-align: right;
-    color: white;
     font-size: 2.08vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.MemeOfTheYear:hover {
-    opacity: 0.9;
 }
 
 /* ===== 2025 Year ===== */
 .Year2025 {
-    position: absolute;
     left: 15.99vw;
     top: 21.77vw;
     width: 12.76vw;
-    opacity: 0.40;
-    text-align: right;
-    color: white;
     font-size: 3.75vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.Year2025:hover {
-    opacity: 0.9;
 }
 
 /* ===== 2024 Year ===== */
 .Year2024 {
-    position: absolute;
     left: 19.53vw;
     top: 28.75vw;
-    opacity: 0.40;
-    text-align: right;
-    color: white;
     font-size: 3.75vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.Year2024:hover {
-    opacity: 0.9;
 }
 
 /* ===== 2023 Year ===== */
 .Year2023 {
-    position: absolute;
     left: 19.48vw;
     top: 35.73vw;
-    opacity: 0.40;
-    text-align: right;
-    color: white;
     font-size: 3.75vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.Year2023:hover {
-    opacity: 0.9;
 }
 
 /* ===== 2022 Year ===== */
 .Year2022 {
-    position: absolute;
     left: 19.53vw;
     top: 42.71vw;
-    opacity: 0.40;
-    text-align: right;
-    color: white;
     font-size: 3.75vw;
-    font-family: 'Haas Grot Text Trial', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.Year2022:hover {
-    opacity: 0.9;
 }
 
 /* ============================================
