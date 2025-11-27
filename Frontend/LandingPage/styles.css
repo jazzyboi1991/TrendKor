@@ -781,6 +781,8 @@ body {
     top: 3.7%;
     position: absolute;
     cursor: pointer;
+    width: 1.667vw;
+    height: 1.719vw;
 }
 
 .Vector:hover {
@@ -801,12 +803,22 @@ body {
     color: white;
     font-family: 'Haas Grot Text Trial', sans-serif;
     word-wrap: break-word;
+    position: absolute;
+}
+
+.SignUp.Title {
+    left: 38.83%;
+    top: 3.472%;
+    font-size: 1.667vw;
+    font-weight: 500;
+    width: 22.34%;
+    height: 3.703%;
 }
 
 /* Sign Up Labels */
 .Nickname {
     left: 10%;
-    top: 16.5%;
+    top: 16.52%;
     position: absolute;
     justify-content: center;
     display: flex;
@@ -820,7 +832,7 @@ body {
 
 .Id {
     left: 10%;
-    top: 36.5%;
+    top: 36.46%;
     position: absolute;
     justify-content: center;
     display: flex;
@@ -834,7 +846,7 @@ body {
 
 .Pw {
     left: 10%;
-    top: 57.5%;
+    top: 57.41%;
     position: absolute;
     justify-content: center;
     display: flex;
@@ -849,47 +861,47 @@ body {
 /* Sign Up Input Rectangles */
 .Rectangle1 {
     width: 80%;
-    height: 6.18%;
+    height: 6.173%;
     left: 10%;
-    top: 22.5%;
+    top: 22.53%;
     position: absolute;
     opacity: 0.6;
     background: white;
-    border-radius: 12px;
+    border-radius: 0.625vw;
 }
 
 .Rectangle2 {
     width: 80%;
-    height: 6.18%;
+    height: 6.173%;
     left: 10%;
-    top: 43.5%;
+    top: 43.52%;
     position: absolute;
     opacity: 0.6;
     background: white;
-    border-radius: 12px;
+    border-radius: 0.625vw;
 }
 
 .Rectangle3 {
     width: 80%;
-    height: 6.18%;
+    height: 6.173%;
     left: 10%;
-    top: 64.5%;
+    top: 64.51%;
     position: absolute;
     opacity: 0.6;
     background: white;
-    border-radius: 12px;
+    border-radius: 0.625vw;
 }
 
 /* Sign Up Submit Button */
 .Rectangle4 {
     width: 32%;
-    height: 6.18%;
+    height: 6.173%;
     left: 34%;
-    top: 78.4%;
+    top: 78.40%;
     position: absolute;
     opacity: 0.6;
     background: white;
-    border-radius: 12px;
+    border-radius: 0.625vw;
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -899,20 +911,27 @@ body {
 }
 
 /* Sign Up Button Text */
-.SignUpButton {
-    left: 39%;
-    top: 80%;
+.SignUp.ButtonText {
+    left: 34%;
+    top: 78.40%;
     position: absolute;
-    font-size: 1.67vw;
+    font-size: 1.667vw;
     font-weight: 400;
+    width: 32%;
+    height: 6.173%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Back Arrow Frame */
 .Frame {
     left: 8%;
-    top: 3.09%;
+    top: 3.086%;
     position: absolute;
     cursor: pointer;
+    width: 2.5vw;
+    height: 2.701vw;
 }
 
 .Frame:hover {
@@ -1170,31 +1189,31 @@ body {
     font-family: inherit;
     color: #333;
     outline: none;
-    padding: 0;
-    font-size: 1vw;
+    padding: 0.5vw;
+    font-size: 0.833vw;
     box-sizing: border-box;
     z-index: 2;
 }
 
 .nickname-input {
-    left: 3.125vw;
-    top: 15.208vw;
-    width: 25vw;
-    height: 3vw;
+    left: 10%;
+    top: 22.53%;
+    width: 80%;
+    height: 6.173%;
 }
 
 .signup-form-input.id-input {
-    left: 3.125vw;
-    top: 29.375vw;
-    width: 25vw;
-    height: 3vw;
+    left: 10%;
+    top: 43.52%;
+    width: 80%;
+    height: 6.173%;
 }
 
 .password-input {
-    left: 3.125vw;
-    top: 43.542vw;
-    width: 25vw;
-    height: 3vw;
+    left: 10%;
+    top: 64.51%;
+    width: 80%;
+    height: 6.173%;
 }
 
 .signup-form-input::placeholder {

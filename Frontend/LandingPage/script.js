@@ -318,16 +318,10 @@ function setupInputValidation() {
  */
 function setupFormButtons() {
     const signInButton = document.querySelector(".login-container .btn-signin");
-    const signUpButton = document.querySelector(".login-container .btn-signup");
 
     signInButton?.addEventListener("click", (e) => {
         e.preventDefault();
         handleSignIn();
-    });
-
-    signUpButton?.addEventListener("click", (e) => {
-        e.preventDefault();
-        handleSignUp();
     });
 }
 
@@ -691,6 +685,7 @@ function handleSignupButtonClick() {
  */
 function handleCloseSignupModal() {
     closeModal(signupModalElement);
+    openModal(loginModalElement, viewport.isMobile);
 }
 
 // ==================== SIGN UP MODAL MODULE ====================
