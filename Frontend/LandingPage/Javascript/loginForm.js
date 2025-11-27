@@ -10,21 +10,8 @@ let isLoggedIn = false;
  * 로그인 폼 초기화
  */
 export function initializeLoginForm() {
-    const form = document.querySelector('.login-modal .login-form');
-
-    if (!form) {
-        console.warn('Login form not found');
-        return;
-    }
-
     // 저장된 로그인 상태 복구
     restoreLoginState();
-
-    // 폼 제출 이벤트
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        handleSignIn();
-    });
 
     // 입력 필드 검증
     setupInputValidation();
@@ -40,8 +27,11 @@ export function initializeLoginForm() {
  * 입력 필드 검증 설정
  */
 function setupInputValidation() {
-    const inputs = document.querySelectorAll('.login-modal .form-input');
-    inputs.forEach(input => {
+    const idInput = document.querySelector('.login-container #user-id');
+    const passwordInput = document.querySelector('.login-container #user-password');
+
+    [idInput, passwordInput].forEach(input => {
+        if (!input) return;
         input.addEventListener('input', validateInput);
         input.addEventListener('blur', validateInput);
         input.addEventListener('focus', removeError);
@@ -52,8 +42,8 @@ function setupInputValidation() {
  * 폼 버튼 설정
  */
 function setupFormButtons() {
-    const signInButton = document.querySelector('.login-modal .btn-signin');
-    const signUpButton = document.querySelector('.login-modal .btn-signup');
+    const signInButton = document.querySelector('.login-container .btn-signin');
+    const signUpButton = document.querySelector('.login-container .btn-signup');
 
     signInButton?.addEventListener('click', (e) => {
         e.preventDefault();
@@ -88,8 +78,8 @@ function setupLoginButtonEvent() {
  * 로그인 처리
  */
 function handleSignIn() {
-    const idInput = document.querySelector('.login-modal #user-id');
-    const passwordInput = document.querySelector('.login-modal #user-password');
+    const idInput = document.querySelector('.login-container #user-id');
+    const passwordInput = document.querySelector('.login-container #user-password');
 
     // 입력값 검증
     if (!idInput.value.trim()) {
@@ -103,7 +93,7 @@ function handleSignIn() {
     }
 
     // 로딩 상태 표시
-    const signInButton = document.querySelector('.login-modal .btn-signin');
+    const signInButton = document.querySelector('.login-container .btn-signin');
     const originalText = signInButton.textContent;
     signInButton.textContent = 'Loading...';
     signInButton.disabled = true;
@@ -121,7 +111,7 @@ function handleSignIn() {
         // 로그인 모달 닫기
         const loginModal = document.getElementById('login-modal');
         if (loginModal) {
-            loginModal.classList.remove('active');
+            loginModal.classList.remove('show');
             document.body.style.overflow = 'auto';
         }
 
@@ -242,7 +232,21 @@ function showError(input, message) {
     errorDiv.setAttribute('role', 'alert');
     errorDiv.setAttribute('aria-live', 'polite');
 
-    input.parentElement.appendChild(errorDiv);
+    // 입력 필드의 위치와 크기를 가져옴
+    const rect = input.getBoundingClientRect();
+    const container = document.querySelector('.login-container');
+    const containerRect = container.getBoundingClientRect();
+
+    // 입력 필드 아래에 위치하도록 설정
+    const topPosition = rect.bottom - containerRect.top + 0.3;
+    const leftPosition = rect.left - containerRect.left;
+
+    errorDiv.style.position = 'absolute';
+    errorDiv.style.top = topPosition + 'px';
+    errorDiv.style.left = leftPosition + 'px';
+    errorDiv.style.width = (rect.width) + 'px';
+
+    input.parentElement.insertBefore(errorDiv, input.nextElementSibling);
     input.setAttribute('aria-invalid', 'true');
     input.classList.add('input-error');
 }
@@ -253,7 +257,8 @@ function showError(input, message) {
  */
 function removeError(event) {
     const input = typeof event === 'object' && event.target ? event.target : event;
-    const errorDiv = input.parentElement.querySelector('.error-message');
+    const container = input.parentElement;
+    const errorDiv = container.querySelector('.error-message');
 
     if (errorDiv) {
         errorDiv.remove();

@@ -16,7 +16,7 @@ let modalCloseButtonElement = null;
 export function initializeLoginModal() {
     loginModalElement = document.getElementById('login-modal');
     loginButtonElement = document.querySelector('.login-button');
-    modalCloseButtonElement = document.querySelector('.modal-close-btn');
+    modalCloseButtonElement = document.querySelector('.login-container .close-btn');
 
     console.log('DOMContentLoaded - loginModal:', loginModalElement);
     console.log('DOMContentLoaded - loginButton:', loginButtonElement);
