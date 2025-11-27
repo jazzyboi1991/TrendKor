@@ -12,7 +12,7 @@ body {
     background: white;
 }
 
-.SignUpMenu {
+.signup-container {
     width: 31.25vw;
     height: 67.5vh;
     position: relative;
@@ -20,6 +20,27 @@ body {
     overflow: hidden;
     max-width: 600px;
     max-height: 1296px;
+}
+
+.close-btn-wrapper {
+    position: absolute;
+    top: 3.7%;
+    right: 3.33%;
+    z-index: 10;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    opacity: 0.8;
 }
 
 .Vector {
@@ -162,26 +183,117 @@ body {
     opacity: 0.8;
 }
 
-input[type="text"],
-input[type="password"] {
+.signup-title {
+    position: absolute;
+    top: 3.47%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.67vw;
+    font-weight: 500;
+    color: white;
+    font-family: 'Haas Grot Text Trial', sans-serif;
+}
+
+.form-label {
+    position: absolute;
+    color: white;
+    font-family: 'Haas Grot Text Trial', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.nickname-label {
+    left: 10%;
+    top: 16.5%;
+    font-size: 2.5vw;
+}
+
+.id-label {
+    left: 10%;
+    top: 36.5%;
+    font-size: 3.125vw;
+}
+
+.pw-label {
+    left: 10%;
+    top: 57.5%;
+    font-size: 3.125vw;
+}
+
+.nickname-input-box,
+.id-input-box,
+.pw-input-box {
+    position: absolute;
     width: 80%;
     height: 6.18%;
+    left: 10%;
+    opacity: 0.6;
+    background: white;
+    border-radius: 12px;
+}
+
+.nickname-input-box {
+    top: 22.5%;
+}
+
+.id-input-box {
+    top: 43.5%;
+}
+
+.pw-input-box {
+    top: 64.5%;
+}
+
+.form-input {
+    width: 80%;
     margin-left: 10%;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.6);
+    background: transparent;
     border: none;
     border-radius: 12px;
-    color: white;
+    color: black;
     font-size: 16px;
     position: absolute;
 }
 
-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+.form-input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
 }
 
-input:focus {
+.form-input:focus {
     outline: none;
-    opacity: 1;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.nickname-input {
+    top: 22.5%;
+}
+
+.id-input {
+    top: 43.5%;
+}
+
+.pw-input {
+    top: 64.5%;
+}
+
+.btn {
+    position: absolute;
+    width: 32%;
+    height: 6.18%;
+    left: 34%;
+    top: 78.4%;
+    opacity: 0.6;
+    background: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    color: black;
+    font-size: 1.67vw;
+    font-weight: 400;
+    font-family: 'Haas Grot Text Trial', sans-serif;
+}
+
+.btn:hover {
+    opacity: 0.8;
 }

@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Sign Up</title>
         <link rel="stylesheet" href="SignupPage.css" />
     </head>
+
     <body>
         <div
-            data-layer="Sign Up Menu"
             class="SignUpMenu"
             style="
                 width: 600px;
@@ -18,9 +18,8 @@
                 overflow: hidden;
             "
         >
+            <!-- Close Button -->
             <div
-                data-svg-wrapper
-                data-layer="Vector"
                 class="Vector"
                 style="left: 520px; top: 48px; position: absolute"
             >
@@ -37,8 +36,9 @@
                     />
                 </svg>
             </div>
+
+            <!-- Title -->
             <div
-                data-layer="SIGN UP"
                 class="SignUp"
                 style="
                     left: 233px;
@@ -57,8 +57,9 @@
             >
                 SIGN UP
             </div>
+
+            <!-- Nickname Label -->
             <div
-                data-layer="NICKNAME"
                 class="Nickname"
                 style="
                     left: 60px;
@@ -76,8 +77,9 @@
             >
                 NICKNAME
             </div>
+
+            <!-- ID Label -->
             <div
-                data-layer="ID"
                 class="Id"
                 style="
                     left: 60px;
@@ -95,8 +97,9 @@
             >
                 ID
             </div>
+
+            <!-- Password Label -->
             <div
-                data-layer="PW"
                 class="Pw"
                 style="
                     left: 60px;
@@ -114,8 +117,9 @@
             >
                 PW
             </div>
+
+            <!-- Nickname Input Box -->
             <div
-                data-layer="Rectangle 1"
                 class="Rectangle1"
                 style="
                     width: 480px;
@@ -128,8 +132,29 @@
                     border-radius: 12px;
                 "
             ></div>
+            <input
+                type="text"
+                id="user-nickname"
+                placeholder="닉네임을 입력하세요"
+                style="
+                    width: 480px;
+                    height: 80px;
+                    left: 60px;
+                    top: 292px;
+                    position: absolute;
+                    border: none;
+                    border-radius: 12px;
+                    padding: 10px;
+                    background: transparent;
+                    outline: none;
+                    font-size: 16px;
+                    color: black;
+                    box-sizing: border-box;
+                "
+            />
+
+            <!-- ID Input Box -->
             <div
-                data-layer="Rectangle 2"
                 class="Rectangle2"
                 style="
                     width: 480px;
@@ -142,8 +167,29 @@
                     border-radius: 12px;
                 "
             ></div>
+            <input
+                type="text"
+                id="user-id"
+                placeholder="아이디를 입력하세요"
+                style="
+                    width: 480px;
+                    height: 80px;
+                    left: 60px;
+                    top: 564px;
+                    position: absolute;
+                    border: none;
+                    border-radius: 12px;
+                    padding: 10px;
+                    background: transparent;
+                    outline: none;
+                    font-size: 16px;
+                    color: black;
+                    box-sizing: border-box;
+                "
+            />
+
+            <!-- Password Input Box -->
             <div
-                data-layer="Rectangle 3"
                 class="Rectangle3"
                 style="
                     width: 480px;
@@ -156,6 +202,28 @@
                     border-radius: 12px;
                 "
             ></div>
+            <input
+                type="password"
+                id="user-password"
+                placeholder="비밀번호를 입력하세요"
+                style="
+                    width: 480px;
+                    height: 80px;
+                    left: 60px;
+                    top: 836px;
+                    position: absolute;
+                    border: none;
+                    border-radius: 12px;
+                    padding: 10px;
+                    background: transparent;
+                    outline: none;
+                    font-size: 16px;
+                    color: black;
+                    box-sizing: border-box;
+                "
+            />
+
+            <!-- Sign Up Button Box -->
             <div
                 data-layer="Rectangle 4"
                 class="Rectangle4"
@@ -170,9 +238,10 @@
                     border-radius: 12px;
                 "
             ></div>
+            <!-- Sign Up Text -->
             <div
                 data-layer="SIGN UP"
-                class="SignUp"
+                class="SignUpButton"
                 style="
                     left: 234px;
                     top: 1037px;
@@ -190,9 +259,9 @@
             >
                 SIGN UP
             </div>
+
+            <!-- Back Arrow Frame -->
             <div
-                data-svg-wrapper
-                data-layer="Frame"
                 class="Frame"
                 style="left: 48px; top: 40px; position: absolute"
             >
