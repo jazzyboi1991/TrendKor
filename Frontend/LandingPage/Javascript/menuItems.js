@@ -4,12 +4,12 @@
  */
 
 const menuItems = {
-    '.menu-home': 'HOME',
-    '.menu-meme-year': 'MEME OF THE YEAR',
-    '.menu-year-2025': '2025',
-    '.menu-year-2024': '2024',
-    '.menu-year-2023': '2023',
-    '.menu-year-2022': '2022'
+    '.Home': 'HOME',
+    '.MemeOfTheYear': 'MEME OF THE YEAR',
+    '.Year2025': '2025',
+    '.Year2024': '2024',
+    '.Year2023': '2023',
+    '.Year2022': '2022'
 };
 
 /**

@@ -16,7 +16,7 @@ let menuCloseButtonElement = null;
 export function initializeMenuModal() {
     menuModalElement = document.getElementById('menu-modal');
     menuButtonElement = document.querySelector('.menu-text');
-    menuCloseButtonElement = document.querySelector('.menu-close-btn');
+    menuCloseButtonElement = document.querySelector('.Vector');
 
     if (!menuModalElement || !menuButtonElement || !menuCloseButtonElement) {
         console.warn('Menu modal elements not found');
