@@ -845,6 +845,8 @@ body {
     background: white;
     border-radius: 12px;
     opacity: 0.6;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .Rectangle1 {
@@ -1155,27 +1157,29 @@ body {
     outline: none;
     padding: 0;
     font-size: 1vw;
-    width: 25vw;
-    height: 3vw;
-    z-index: 1;
+    box-sizing: border-box;
+    z-index: 2;
 }
 
 .nickname-input {
     left: 3.125vw;
     top: 15.208vw;
-    padding: 0.3vw 0.3vw 0.3vw 0.6vw;
+    width: 25vw;
+    height: 3vw;
 }
 
 .signup-form-input.id-input {
     left: 3.125vw;
     top: 29.375vw;
-    padding: 0.3vw 0.3vw 0.3vw 0.6vw;
+    width: 25vw;
+    height: 3vw;
 }
 
 .password-input {
     left: 3.125vw;
     top: 43.542vw;
-    padding: 0.3vw 0.3vw 0.3vw 0.6vw;
+    width: 25vw;
+    height: 3vw;
 }
 
 .signup-form-input::placeholder {
@@ -1387,6 +1391,34 @@ body {
 
 .Year2022:hover {
     opacity: 0.9;
+}
+
+/* ============================================
+   Scrollbar Styles
+   ============================================ */
+
+/* 전체 스크롤바 숨기기 - Webkit 브라우저 (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 0.521vw;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.6);
+    border-radius: 0.521vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(128, 128, 128, 0.9);
+}
+
+/* Firefox 스크롤바 스타일 */
+* {
+    scrollbar-color: rgba(128, 128, 128, 0.6) transparent;
+    scrollbar-width: thin;
 }
 
 /* ============================================
