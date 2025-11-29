@@ -143,7 +143,12 @@ body {
     user-select: none;
 }
 
-.navbar__button:hover {
+.navbar__button--login:hover {
+    color: var(--color-red);
+    background: rgba(198, 12, 48, 0.1);
+}
+
+.navbar__button--menu:hover {
     color: var(--color-dark-blue);
     background: rgba(0, 71, 173, 0.1);
 }
