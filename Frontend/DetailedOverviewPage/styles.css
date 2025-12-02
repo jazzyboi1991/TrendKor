@@ -157,13 +157,13 @@ body {
 /* ===== Detail Page Container ===== */
 .detail-page {
     width: 100%;
-    min-height: 220vw;
+    min-height: 205.27vw;
     height: auto;
     position: relative;
     background: white;
     overflow: visible;
     max-width: 1920px;
-    margin: 0 auto 0 auto;
+    margin: 0 auto -40.9033vw auto;
     transform: scale(0.75);
     transform-origin: top center;
 }
