@@ -630,22 +630,225 @@ function handleMenuNavigation(itemName) {
     console.log(`Navigating to: ${itemName}`);
 }
 
+// ==================== CARD DATA & RENDERING MODULE ====================
+/**
+ * 백엔드 연동 가이드:
+ *
+ * 1. MOCK_DATA를 API 호출로 대체하세요:
+ *    const data = await fetch(`/api/memes/${year}`).then(r => r.json());
+ *
+ * 2. 데이터 형식:
+ *    [{
+ *        id: number,
+ *        title: string,
+ *        views: string,
+ *        imageUrl: string (선택사항, 기본값: assets/image0_108_70.png),
+ *        iconUrl: string (선택사항, 기본값: assets/image0_108_70.png)
+ *    }]
+ *
+ * 3. renderCards() 함수가 자동으로 데이터를 HTML로 변환합니다.
+ */
+const MOCK_DATA = {
+    '2025': [
+        { id: 1, title: 'THIS IS THE TITLE', views: 'n Views', imageUrl: 'assets/image0_108_70.png', iconUrl: 'assets/image0_108_70.png' },
+        { id: 2, title: 'THIS IS THE TITLE', views: 'n Views', imageUrl: 'assets/image0_108_79.png', iconUrl: 'assets/image0_108_79.png' },
+        { id: 3, title: 'THIS IS THE TITLE', views: 'n Views', imageUrl: 'assets/image0_108_86.png', iconUrl: 'assets/image0_108_86.png' },
+        { id: 4, title: 'THIS IS THE TITLE', views: 'n Views', imageUrl: 'assets/image0_108_93.png', iconUrl: 'assets/image0_108_93.png' },
+        { id: 5, title: 'THIS IS THE TITLE', views: 'n Views', imageUrl: 'assets/image0_108_100.png', iconUrl: 'assets/image0_108_100.png' },
+    ],
+    '2024': [
+        { id: 1, title: '2024 Title 1', views: 'n Views', imageUrl: 'assets/image0_108_70.png', iconUrl: 'assets/image0_108_70.png' },
+        { id: 2, title: '2024 Title 2', views: 'n Views', imageUrl: 'assets/image0_108_79.png', iconUrl: 'assets/image0_108_79.png' },
+        { id: 3, title: '2024 Title 3', views: 'n Views', imageUrl: 'assets/image0_108_86.png', iconUrl: 'assets/image0_108_86.png' },
+        { id: 4, title: '2024 Title 4', views: 'n Views', imageUrl: 'assets/image0_108_93.png', iconUrl: 'assets/image0_108_93.png' },
+        { id: 5, title: '2024 Title 5', views: 'n Views', imageUrl: 'assets/image0_108_100.png', iconUrl: 'assets/image0_108_100.png' },
+    ],
+    '2023': [
+        { id: 1, title: '2023 Title 1', views: 'n Views', imageUrl: 'assets/image0_108_70.png', iconUrl: 'assets/image0_108_70.png' },
+        { id: 2, title: '2023 Title 2', views: 'n Views', imageUrl: 'assets/image0_108_79.png', iconUrl: 'assets/image0_108_79.png' },
+        { id: 3, title: '2023 Title 3', views: 'n Views', imageUrl: 'assets/image0_108_86.png', iconUrl: 'assets/image0_108_86.png' },
+        { id: 4, title: '2023 Title 4', views: 'n Views', imageUrl: 'assets/image0_108_93.png', iconUrl: 'assets/image0_108_93.png' },
+        { id: 5, title: '2023 Title 5', views: 'n Views', imageUrl: 'assets/image0_108_100.png', iconUrl: 'assets/image0_108_100.png' },
+    ],
+    '2022': [
+        { id: 1, title: '2022 Title 1', views: 'n Views', imageUrl: 'assets/image0_108_70.png', iconUrl: 'assets/image0_108_70.png' },
+        { id: 2, title: '2022 Title 2', views: 'n Views', imageUrl: 'assets/image0_108_79.png', iconUrl: 'assets/image0_108_79.png' },
+        { id: 3, title: '2022 Title 3', views: 'n Views', imageUrl: 'assets/image0_108_86.png', iconUrl: 'assets/image0_108_86.png' },
+        { id: 4, title: '2022 Title 4', views: 'n Views', imageUrl: 'assets/image0_108_93.png', iconUrl: 'assets/image0_108_93.png' },
+        { id: 5, title: '2022 Title 5', views: 'n Views', imageUrl: 'assets/image0_108_100.png', iconUrl: 'assets/image0_108_100.png' },
+    ],
+};
+
+// 카드 위치 설정 (원래 절대 위치)
+const CARD_POSITIONS = [
+    // Card 1 - Left Column, Row 1
+    {
+        left: '5.2%',
+        top: '74.0vw',
+        infoTop: '101.77vw',
+        titleTop: '108.72vw',
+        viewsLeft: '36.7%',
+        viewsTop: '98.645vw',
+        iconLeft: '42.7%',
+        iconTop: '74.0vw'
+    },
+    // Card 2 - Right Column, Row 1
+    {
+        left: '51%',
+        top: '74.0vw',
+        infoTop: '101.77vw',
+        titleTop: '108.72vw',
+        viewsLeft: '82.5%',
+        viewsTop: '98.645vw',
+        iconLeft: '88.5%',
+        iconTop: '74.0vw'
+    },
+    // Card 3 - Left Column, Row 2
+    {
+        left: '5.2%',
+        top: '118.8vw',
+        infoTop: '146.57000000000002vw',
+        titleTop: '153.52vw',
+        viewsLeft: '36.7%',
+        viewsTop: '143.445vw',
+        iconLeft: '42.7%',
+        iconTop: '118.8vw'
+    },
+    // Card 4 - Right Column, Row 2
+    {
+        left: '51%',
+        top: '118.8vw',
+        infoTop: '146.57000000000002vw',
+        titleTop: '153.52vw',
+        viewsLeft: '82.5%',
+        viewsTop: '143.445vw',
+        iconLeft: '88.5%',
+        iconTop: '118.8vw'
+    },
+    // Card 5 - Left Column, Row 3
+    {
+        left: '5.2%',
+        top: '163.60000000000002vw',
+        infoTop: '191.37vw',
+        titleTop: '198.32vw',
+        viewsLeft: '36.7%',
+        viewsTop: '188.245vw',
+        iconLeft: '42.7%',
+        iconTop: '163.60000000000002vw'
+    }
+];
+
+/**
+ * 카드를 HTML로 생성하는 함수
+ */
+function createCardHTML(cardData, position, index) {
+    const uniqueId = `pattern_${cardData.id}_${Math.random().toString(36).substr(2, 9)}`;
+    const iconId = `icon_${cardData.id}_${Math.random().toString(36).substr(2, 9)}`;
+
+    return `
+        <div class="card__image-container" style="left: ${position.left}; top: ${position.top};" data-card-id="${index}" data-element="image"></div>
+        <div class="card__info-container" style="left: ${position.left}; top: ${position.infoTop};" data-card-id="${index}" data-element="info"></div>
+        <div class="card__title" style="left: ${position.left}; top: ${position.titleTop};" data-card-id="${index}" data-element="title">${cardData.title}</div>
+        <div class="card__views" style="left: ${position.viewsLeft}; top: ${position.viewsTop};" data-card-id="${index}" data-element="views">${cardData.views}</div>
+        <div class="card__icon" style="left: ${position.iconLeft}; top: ${position.iconTop};" data-card-id="${index}" data-element="icon">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path d="M120 0H0V120H120V0Z" fill="url(#${uniqueId})"/>
+                <defs>
+                    <pattern id="${uniqueId}" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#${iconId}" transform="scale(0.00416667)"/>
+                    </pattern>
+                    <image id="${iconId}" xlink:href="${cardData.iconUrl}"/>
+                </defs>
+            </svg>
+        </div>
+    `;
+}
+
+/**
+ * 연도에 따른 카드를 렌더링하는 함수
+ */
+function renderCards(year) {
+    const container = document.getElementById('cards-container');
+    const cardsData = MOCK_DATA[year] || [];
+
+    let htmlContent = '';
+    cardsData.forEach((cardData, index) => {
+        if (index < CARD_POSITIONS.length) {
+            htmlContent += createCardHTML(cardData, CARD_POSITIONS[index], index);
+        }
+    });
+
+    container.innerHTML = htmlContent;
+
+    // 새로 추가된 카드들에 fade-in 애니메이션 적용
+    setTimeout(() => {
+        const cardElements = container.querySelectorAll('[data-card-id]');
+        cardElements.forEach(el => {
+            el.classList.add('fade-in');
+            // 애니메이션 후 클래스 제거
+            el.addEventListener('animationend', () => {
+                el.classList.remove('fade-in');
+            }, { once: true });
+        });
+    }, 0);
+}
+
+/**
+ * 카드들을 fade-out 애니메이션으로 사라지게 하는 함수
+ */
+function fadeOutCards() {
+    return new Promise((resolve) => {
+        const container = document.getElementById('cards-container');
+        const cardElements = container.querySelectorAll('[data-card-id]');
+
+        if (cardElements.length === 0) {
+            resolve();
+            return;
+        }
+
+        let completedCount = 0;
+
+        cardElements.forEach((el) => {
+            el.classList.add('fade-out');
+
+            el.addEventListener('animationend', () => {
+                completedCount++;
+                if (completedCount === cardElements.length) {
+                    resolve();
+                }
+            }, { once: true });
+        });
+    });
+}
+
 // ==================== YEAR BUTTONS MODULE ====================
 function initializeYearButtons() {
     const yearButtons = document.querySelectorAll('.year-button');
 
-    // 초기: 첫 번째 버튼을 활성화
+    // 초기: 첫 번째 버튼을 활성화하고 2025 카드 렌더링
     if (yearButtons.length > 0) {
         yearButtons[0].classList.add('year-button--active');
+        renderCards('2025');
     }
 
     // 버튼 클릭 이벤트
     yearButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // 모든 버튼에서 year-button--active 클래스 제거
-            yearButtons.forEach(btn => btn.classList.remove('year-button--active'));
+        button.addEventListener('click', async () => {
+            // 중복 클릭 방지
+            if (button.classList.contains('year-button--active')) {
+                return;
+            }
 
-            // 클릭한 버튼에 year-button--active 클래스 추가
+            const year = button.textContent.trim();
+
+            // 1. 기존 카드들을 fade-out 애니메이션으로 사라지게 함
+            await fadeOutCards();
+
+            // 2. 새 데이터로 카드 렌더링
+            renderCards(year);
+
+            // 3. 활성 버튼 변경
+            yearButtons.forEach(btn => btn.classList.remove('year-button--active'));
             button.classList.add('year-button--active');
         });
     });
