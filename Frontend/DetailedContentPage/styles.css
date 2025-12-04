@@ -279,7 +279,8 @@ body {
 
 .ToggleSwitch .Knob {
     position: relative;
-    max-height: 1.5vw;
+    width: 2.44vw;
+    height: 1.5vw;
     display: flex;
     align-items: center;
 }
