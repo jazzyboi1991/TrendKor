@@ -125,12 +125,14 @@ body {
 
 /* 제목 텍스트 - MEMES */
 .DetailPageDetail > .Memes {
-    left: 5.21vw;
-    top: 56.04vw;
+    left: 5.2%;
+    top: 50.8vw;
     position: absolute;
     color: white;
-    font-size: 6.25vw;
+    font-size: clamp(32px, 6.25vw, 120px);
     font-weight: 500;
+    font-family: var(--font-family);
+    transform: translateY(-30px);
     word-wrap: break-word;
     z-index: 10;
 }
@@ -170,10 +172,10 @@ body {
 
 /* 배경 벡터 이미지 (큰 이미지 1920x1151) */
 .DetailPageDetail > [data-svg-wrapper].BackgroundImage {
-    width: 100vw;
-    height: 59.95vw;
+    width: 100%;
+    height: auto;
     left: 0;
-    top: 5.21vw;
+    top: 0;
     position: absolute;
     z-index: 0;
 }
@@ -341,6 +343,7 @@ body {
 .DetailPageDetail.kor-mode .ContentSection__text--kor {
     display: block;
 }
+
 
 /* 샘플 이미지 */
 .SampleImage {
