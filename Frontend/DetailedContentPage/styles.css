@@ -926,10 +926,15 @@ body:has(.DetailPageDetail.kor-mode) {
 
 /* 회원가입 제출 버튼 */
 .signup-submit-btn {
+    position: absolute;
     width: 32%;
     height: 6.173%;
     left: 34%;
     top: 78.40%;
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 12px;
+    color: #FFFFFF;
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -974,13 +979,14 @@ body:has(.DetailPageDetail.kor-mode) {
     opacity: 0.8;
 }
 
-/* 회원가입 폼 입력 */
+/* 회원가입 폼 입력 - LandingPage 스타일 적용 */
 .signup-form-input {
     position: absolute;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.6);
     border: none;
+    border-radius: 12px;
     font-family: inherit;
-    color: #333;
+    color: #FFFFFF;
     outline: none;
     padding: 0.5vw;
     font-size: 0.833vw;
