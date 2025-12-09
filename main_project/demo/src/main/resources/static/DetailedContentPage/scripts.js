@@ -72,12 +72,15 @@ function handleModalEscapeKey(event, modalElement, closeCallback) {
 
 // ==================== LOGIN FORM MODULE ====================
 let isLoggedIn = false;
+let sessionNickname = null;
 
 function initializeLoginForm() {
     restoreLoginState();
     setupInputValidation();
     setupFormButtons();
     setupLoginButtonEvent();
+    fetchSessionUser();
+    setupCommentAuthGuard();
 }
 
 function setupInputValidation() {
@@ -151,8 +154,9 @@ async function handleSignIn() {
 
     try {
         // 백엔드 API 호출
-        const response = await fetch("http://localhost:8080/api/users/login", {
+        const response = await fetch("/api/users/login", {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -168,10 +172,10 @@ async function handleSignIn() {
             // 로그인 성공
             console.log("Login successful:", data);
 
-            // 로그인 상태 업데이트
+            // 로그인 상태 업데이트 (서버 세션 기반)
             isLoggedIn = true;
-            // 닉네임 저장
-            localStorage.setItem("userNickname", data.nickname || idInput.value);
+            sessionNickname = data.nickname || idInput.value;
+            localStorage.setItem("userNickname", sessionNickname);
             saveLoginState();
             updateLoginButton();
 
@@ -188,7 +192,9 @@ async function handleSignIn() {
             removeError(idInput);
             removeError(passwordInput);
 
-            alert(`${data.nickname}님, 환영합니다!`);
+            alert(`${sessionNickname}님, 환영합니다!`);
+            // 세션 기반 템플릿이 반영되도록 새로고침
+            window.location.reload();
         } else {
             // 로그인 실패
             console.error("Login failed:", data);
@@ -237,7 +243,7 @@ function updateLoginButton() {
 
         // 닉네임 표시
         if (nicknameElement) {
-            const nickname = localStorage.getItem("userNickname") || "사용자";
+            const nickname = sessionNickname || localStorage.getItem("userNickname") || "사용자";
             nicknameElement.textContent = nickname;
             nicknameElement.style.display = "block";
         } else {
@@ -266,6 +272,57 @@ function restoreLoginState() {
         isLoggedIn = JSON.parse(savedState);
         updateLoginButton();
     }
+}
+
+// 세션 기반 로그인 상태 조회
+async function fetchSessionUser() {
+    try {
+        const res = await fetch("/api/users/me", { credentials: "include" });
+        if (!res.ok) {
+            isLoggedIn = false;
+            sessionNickname = null;
+            updateLoginButton();
+            return;
+        }
+        const data = await res.json();
+        isLoggedIn = true;
+        sessionNickname = data.nickname || data.username;
+        localStorage.setItem("userNickname", sessionNickname);
+        saveLoginState();
+        updateLoginButton();
+    } catch (err) {
+        console.warn("세션 사용자 조회 실패:", err);
+    }
+}
+
+// 댓글 작성 시 로그인 여부 확인
+function setupCommentAuthGuard() {
+    const commentForm = document.querySelector(".comment-form");
+    const commentTextarea = document.querySelector(".comment-textarea");
+    const loginLink = document.querySelector(".login-link");
+
+    const openLogin = () => {
+        handleOpenLoginModal();
+    };
+
+    if (loginLink) {
+        loginLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            openLogin();
+        });
+    }
+
+    const guard = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault();
+            openLogin();
+            alert("로그인 후 댓글을 작성할 수 있습니다.");
+        }
+    };
+
+    commentForm?.addEventListener("submit", guard);
+    commentTextarea?.addEventListener("focus", guard);
+    commentTextarea?.addEventListener("click", guard);
 }
 
 function validateInput(event) {

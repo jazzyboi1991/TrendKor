@@ -301,42 +301,148 @@ body {
 .CommentSection {
     width: 83.33%;
     height: 31.25vw;
+    min-height: 600px;
     left: 8.33vw;
     top: 252.60vw;
     position: absolute;
     background: white;
+    /* 전체 박스는 영역 안에서만 보이도록 */
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
-/* 댓글 입력창 */
-.CommentSection__input {
-    width: 100%;
-    height: 100%;
+/* --- 댓글 섹션 전체 스타일 --- */
+.comment-section {
+    max-width: 100%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* 댓글 폼 + 목록을 카드 내부에서 스크롤 */
+    max-height: 540px;
     overflow-y: auto;
-    overflow-x: hidden;
-    padding: 2.08vw;
+}
+
+.comment-section h2 {
+    /* 💬 이모지와의 간격을 위해 Flexbox 사용 */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5em;
+}
+
+/* --- 댓글 작성 폼 스타일 --- */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.comment-list-container {
+    max-height: 360px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.comment-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: vertical;
+    font-size: 1em;
     box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.comment-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.submit-button {
+    align-self: flex-end;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    background: white;
-    color: #000000;
-    font-family: 'Neue Haas Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 2.083vw;
-    font-weight: 400;
-    line-height: 1.8;
-    word-wrap: break-word;
-    word-break: keep-all;
-    resize: none;
-    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.CommentSection__input::placeholder {
-    color: rgba(0, 0, 0, 0.6);
+.submit-button:hover {
+    background-color: #0056b3;
 }
 
-.CommentSection__input:focus {
-    outline: none;
+/* --- 로그인 안내 메시지 --- */
+.login-prompt {
+    padding: 15px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-prompt a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* --- 댓글 목록 스타일 --- */
+.section-divider {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+.comment-item {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 15px;
+}
+
+.comment-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.95em;
+}
+
+.comment-date {
+    color: #999;
+    font-size: 0.8em; /* 날짜는 작게 유지하여 정보 전달 */
+}
+
+.comment-content {
+    margin: 0;
+    line-height: 1.6;
+    color: #555;
+    white-space: pre-wrap;
 }
 
 /* 제목 */

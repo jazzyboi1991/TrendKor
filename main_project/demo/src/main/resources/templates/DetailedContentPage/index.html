@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,7 +62,45 @@
             <div data-layer="Rectangle 7" class="footer-background"></div>
             <div data-layer="Rectangle 10" class="header-background"></div>
             <div data-layer="Comment Section" class="CommentSection">
-                <textarea class="CommentSection__input" placeholder="댓글을 작성하세요..."></textarea>
+            <div class="comment-section" style="width:100%;">
+            <h2 style="width:100%;">💬 댓글 <span th:text="${#lists.size(commentList)}">0</span></h2>
+            
+            <div th:if="${isLoggedIn}" class="comment-form-container" style="width:100%;">
+                <form th:action="@{/comments/create}" method="post" class="comment-form" style="width:100%;">
+                    <textarea 
+                        name="content" 
+                        placeholder="댓글을 입력하세요..." 
+                        rows="6" 
+                        required 
+                        class="comment-textarea"
+                        style="width:100%; min-height:4.5rem; font-size:1.6rem;"
+                    ></textarea>
+                    
+                        <button type="submit" class="submit-button" style="align-self:flex-end;">등록</button>
+                    </form>
+                </div>
+                
+                <div th:unless="${isLoggedIn}" class="login-prompt">
+                    <p>댓글을 작성하려면 <a href="#" class="login-link">로그인</a>이 필요합니다.</p>
+                </div>
+                
+                <hr class="section-divider">
+                
+                <div class="comment-list-container">
+                    <div th:each="comment : ${commentList}" class="comment-item">
+                        <div class="comment-header">
+                            <span class="comment-author" th:text="${comment.author.username}">사용자 이름</span>
+                            <span class="comment-date" th:text="${#temporals.format(comment.createdDate, 'yyyy.MM.dd HH:mm')}">2025.12.09 10:00</span>
+                            <form th:if="${isLoggedIn} and ${comment.author.username} == ${currentUsername}"
+                                  th:action="@{/comments/delete}" method="post" style="margin-left:auto;">
+                                <input type="hidden" name="commentId" th:value="${comment.id}" />
+                                <button type="submit" class="submit-button" style="padding:4px 8px; font-size:0.9rem;">삭제</button>
+                            </form>
+                        </div>
+                        <p class="comment-content" th:text="${comment.content}">댓글 내용이 여기에 표시됩니다.</p>
+                    </div>
+                </div>
+            </div>
             </div>
             <div data-svg-wrapper data-layer="Vector" class="BackArrow">
                 <svg
