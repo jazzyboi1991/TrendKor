@@ -497,7 +497,6 @@ body {
     left: 0;
     top: 130.073vw;
     background: var(--color-white);
-    border: 0.052vw solid var(--color-black);
 }
 
 .meme-line {
@@ -535,7 +534,7 @@ body {
     left: 50%;
     top: 140.489vw;
     transform: translateX(-50%);
-    background: var(--color-light-blue);
+    background: transparent;
     overflow: hidden;
     background-size: contain;
     background-position: center;

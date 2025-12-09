@@ -1316,12 +1316,11 @@ async function loadMemeOfTheYear() {
                 const finalHeight = Math.min(Math.max(calculatedHeight, minHeight), maxHeight);
                 
                 rectangle3.style.height = finalHeight + 'px';
-                
+
                 rectangle3.style.backgroundImage = `url(${imagePath})`;
                 rectangle3.style.backgroundSize = 'contain';
                 rectangle3.style.backgroundPosition = 'center';
                 rectangle3.style.backgroundRepeat = 'no-repeat';
-                rectangle3.style.backgroundColor = 'var(--color-light-blue)';
             };
             img.onerror = function() {
                 // 이미지 로드 실패 시 기본 설정
@@ -1329,7 +1328,6 @@ async function loadMemeOfTheYear() {
                 rectangle3.style.backgroundSize = 'contain';
                 rectangle3.style.backgroundPosition = 'center';
                 rectangle3.style.backgroundRepeat = 'no-repeat';
-                rectangle3.style.backgroundColor = 'var(--color-light-blue)';
             };
             img.src = imagePath;
         }
