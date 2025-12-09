@@ -166,9 +166,13 @@ function initializeTitleGroupAnimation() {
     });
     titleScrollTriggers = [];
 
-    // 요소를 초기 상태로 리셋
-    gsap.set([titleGraphicGroup, subtitleGraphicGroup], {
+    // 요소를 초기 상태로 리셋 (subtitle을 title과 겹치도록 위로 올림)
+    gsap.set(titleGraphicGroup, {
         y: 0,
+        opacity: 1
+    });
+    gsap.set(subtitleGraphicGroup, {
+        y: -17.084,  // subtitle의 top 위치만큼 위로 올려서 title과 겹침
         opacity: 1
     });
 

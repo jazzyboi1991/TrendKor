@@ -136,9 +136,9 @@ body {
     top: 5.208vw;
     transform: translateX(-50%);
     width: 89.427vw;
-    height: 49.844vw;
+    height: 47.759vw;
     overflow: hidden;
-    clip-path: inset(0); /* 동영상 크기에 맞춘 정확한 클리핑 */
+    clip-path: inset(0); /* 파란색 타이틀 맨 아래까지만 표시 */
     z-index: var(--z-title);
 }
 
@@ -256,10 +256,10 @@ body {
 /* 비디오 배경 */
 .video {
     width: 89.427vw;
-    height: 49.844vw;
+    height: 64.843vw;
     position: absolute;
     left: 50%;
-    top: 5.208vw;
+    top: 0;
     transform: translateX(-50%);
     object-fit: cover;
     object-position: center top;
