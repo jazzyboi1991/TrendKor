@@ -21,6 +21,7 @@ public class MemeService {
         return memeDataRepository.save(memeData);
     }
     
+    @SuppressWarnings("null")
     public MemeData incrementViewCount(Long id) {
         MemeData memeData = memeDataRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Meme not found with id: " + id));
@@ -28,6 +29,7 @@ public class MemeService {
         return memeDataRepository.save(memeData);
     }
     
+    @SuppressWarnings("null")
     public MemeData getMemeById(Long id) {
         return memeDataRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Meme not found with id: " + id));
