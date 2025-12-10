@@ -21,14 +21,16 @@ public class MemeService {
         return memeDataRepository.save(memeData);
     }
     
-    public MemeData incrementViewCount(@NonNull Long id) {
+    @SuppressWarnings("null")
+    public MemeData incrementViewCount(Long id) {
         MemeData memeData = memeDataRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Meme not found with id: " + id));
         memeData.setViewCount(memeData.getViewCount() + 1);
         return memeDataRepository.save(memeData);
     }
     
-    public MemeData getMemeById(@NonNull Long id) {
+    @SuppressWarnings("null")
+    public MemeData getMemeById(Long id) {
         return memeDataRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Meme not found with id: " + id));
     }
