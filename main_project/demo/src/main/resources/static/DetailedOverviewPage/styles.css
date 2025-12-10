@@ -177,7 +177,7 @@ body {
     position: relative;
     background: white;
     overflow: visible;
-    max-width: 1920px;
+    
     margin: 0 auto -40.9033vw auto;
     transform: scale(0.75);
     transform-origin: top center;
@@ -384,7 +384,7 @@ body {
     align-items: center;
     padding: 1.042vw 5.156vw;
     gap: 6.250vw;
-    max-width: 1920px;
+    
     margin-top: 0;
 }
 
