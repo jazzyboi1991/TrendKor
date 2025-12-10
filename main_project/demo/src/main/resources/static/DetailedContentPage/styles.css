@@ -118,7 +118,7 @@ body {
     position: relative;
     background: white;
     overflow: visible;
-    max-width: 1920px;
+    
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
@@ -152,7 +152,7 @@ body {
     align-items: center;
     padding: 1.042vw 5.156vw;
     gap: 6.250vw;
-    max-width: 1920px;
+    
     margin-top: 10.4167vw;
 }
 

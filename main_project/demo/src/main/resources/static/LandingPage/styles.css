@@ -589,10 +589,8 @@ body {
     align-items: center;
     gap: 6.250vw;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     top: 185.489vw;
-    max-width: 1920px;
 }
 
 .Footer .Logo1 {
@@ -643,6 +641,17 @@ body {
     }
     
     .Footer {
+    width: 100%;
+    min-height: 10.417vw;
+    padding: 1.042vw 5.156vw;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6.250vw;
+    position: absolute;
+    left: 0;
+    top: 185.489vw;
         flex-direction: column;
         gap: 3.125vw;
         padding: 4.167vw 0;
@@ -1433,6 +1442,17 @@ body {
    ============================================ */
 
 .Footer {
+    width: 100%;
+    min-height: 10.417vw;
+    padding: 1.042vw 5.156vw;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6.250vw;
+    position: absolute;
+    left: 0;
+    top: 185.489vw;
     width: 100%;
     height: 10.417vw;
     background: var(--color-black);
